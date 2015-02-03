@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1387364534 source:/home/polyfrag/Projects/BattleComputer/aaa000/game/main.c
+	<stdio.h>
+	<stdlib.h>
+	<GL/glx.h>
+	<GL/gl.h>
+	<X11/X.h>
+	<X11/keysym.h>
+

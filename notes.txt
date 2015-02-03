@@ -1,0 +1,8 @@
+If strict reproducibility and consistency are important do not change the 
+floating point environment without also using either fp-model strict 
+(Linux or Mac OS*) or /fp:strict (Windows*) option or pragma fenv_access.
+
+Intel C++ Compiler Manual
+
+http://cache-www.intel.com/cd/00/00/34/76/347605_347605.pdf
+http://gafferongames.com/networking-for-game-programmers/floating-point-determinism/

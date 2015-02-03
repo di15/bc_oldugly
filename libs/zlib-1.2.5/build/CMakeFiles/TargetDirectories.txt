@@ -1,0 +1,6 @@
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/zlib-1.2.5/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/zlib-1.2.5/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/zlib-1.2.5/build/CMakeFiles/example.dir
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/zlib-1.2.5/build/CMakeFiles/minigzip.dir
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/zlib-1.2.5/build/CMakeFiles/zlib.dir
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/zlib-1.2.5/build/CMakeFiles/zlibstatic.dir

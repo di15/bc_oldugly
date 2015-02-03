@@ -1,0 +1,205 @@
+<!-- MHonArc v2.6.16 -->
+<!--X-Subject: Re: Binaries for Visual Studio 2008? -->
+<!--X-From-R13: "Ayvire Svpuyre" <byvire.rvpuyreNtzk.qr> -->
+<!--X-Date: Thu, 31 Mar 2011 11:14:20 +0200 (CEST) -->
+<!--X-Message-Id: 20110331091418.137040@gmx.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 4D937011.1080302@gmx.de -->
+<!--X-Reference: AANLkTi=x43TMtX5NvLiUw3qcBRyDJzewDo31H+WjLPyj@mail.gmail.com -->
+<!--X-Head-End-->
+<!--#set var="title" value="Re: Binaries for Visual Studio 2008?" -->
+<!--#include virtual="/templates/mailing-list-libzip-discuss.html" -->
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!-- -->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<!--
+[<a href="msg00201.html">Date Prev</a>][<a href="msg00203.html">Date Next</a>][<a href="msg00201.html">Thread Prev</a>][<a href="msg00203.html">Thread Next</a>][<a
+href="../../../index.html#00202">Date Index</a>][<a
+href="../../../tindex.html#00202">Thread Index</a>][<a
+href="../oindex.html">Old Index</a>]
+-->
+<h4 class="nih ml heading thread">Thread</h4>
+<p><a href="tindex.html#00202">Thread Index</a></p>
+<ul class="nih ml thread slice first">
+<li class="nih ml index thread">
+ <a name="00200" href="msg00200.html">
+  <span class="nih ml index thread subject">Binaries for Visual Studio 2008?</span></a>,
+ <span class="nih ml index thread from">Oliver Eichler</span>
+ (<span class="nih ml index thread date">2011/03/30 18:06:47</span>)
+<ul class="nih ml thread slice indent">
+<li class="nih ml index thread">
+ <a name="00201" href="msg00201.html">
+  <span class="nih ml index thread subject">Re: Binaries for Visual Studio 2008?</span></a>,
+ <span class="nih ml index thread from">Pierre Joye</span>
+ (<span class="nih ml index thread date">2011/03/30 18:18:35</span>)
+<ul class="nih ml thread slice indent">
+<li class="nih ml index thread current">
+  <span class="nih ml index thread current subject">Re: Binaries for Visual Studio 2008?</span>,
+ <span class="nih ml index thread current from">Oliver Eichler</span>
+ (<span class="nih ml index thread current date">2011/03/31 09:14:20</span>)
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h4 class="nih ml heading message">Message</h4>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<p class="nih ml message header">
+<span class="nih ml message header label">
+From</span>:
+<span class="nih ml message header text">
+&quot;Oliver Eichler&quot; &lt;<a href="mailto:oliver.eichler%gmx.de@localhost">oliver.eichler%gmx.de@localhost</a>&gt;</span><br>
+
+<span class="nih ml message header label">
+To</span>:
+<span class="nih ml message header text">
+<a href="mailto:libzip-discuss%nih.at@localhost">libzip-discuss%nih.at@localhost</a></span><br>
+
+<span class="nih ml message header label">
+Subject</span>:
+<span class="nih ml message header text">
+Re: Binaries for Visual Studio 2008?</span><br>
+
+<span class="nih ml message header label">
+Date</span>:
+<span class="nih ml message header text">
+Thu, 31 Mar 2011 11:14:18 +0200</span><br>
+
+</p>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<!-- -->
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi,
+
+ok, compiling my own zlib brought be a step further. I selected the option to 
+build a static zlib. However that makes cmake barf on the libzip side as it 
+tests on ZEXPORT. And ZEXPORT is not defined for a static lib, for obvious 
+reasons. I fixed that by commenting the 4 lines in the CMakeLists.txt.
+
+With that zlib I could compile the libzip DLL. However five projects failed, 
+because Microsoft's C implementation lacks some functions. Whatever, I am 
+looking for a static lib, thus I did not investigate further.
+
+Next I tried to make a static libzip. For that I added to the main 
+CMakeLists.txt
+
+if(NOT DEFINED BUILD_SHARED_LIBS)
+    option(BUILD_SHARED_LIBS &quot;Build a shared library form of libzip&quot; ON)
+endif()
+
+And to lib/CMakeLists.txt
+
+if(BUILD_SHARED_LIBS)
+        ADD_LIBRARY(zip SHARED ${LIBZIP_SOURCES} ${LIBZIP_EXTRA_FILES})
+else(BUILD_SHARED_LIBS)
+        ADD_LIBRARY(zip ${LIBZIP_SOURCES} ${LIBZIP_EXTRA_FILES})
+endif(BUILD_SHARED_LIBS)
+
+That failed miserably because the linker could not find any symbol in the 
+created zip.lib. My guess: because all exported functions are still prepended 
+by __declspec(import). :/ (@#!$&#xA7; Windows). 
+
+At that point I decided to give the dynamic lib a try. My little application 
+compiles but crashes. It runs fine until it hits zip_add(). The crash is inside 
+zip_add(). I couldn't step into that. For what ever reason. I used the debug 
+version of libzip. Probably I messed up something with the debug/release stuff.
+
+Anyway this is very frustrating. I made a pretty good experience with binary 
+distributions of libs on Windows so far. That really helps to port *nix based 
+applications to windows very fast. Thus it would be very kind of you to supply 
+binaries, too. 
+
+Cheers,
+
+Oliver
+
+Just if you wonder what I need that stuff for: I write a small converter for 
+raster maps that outputs Garmin Custom Maps, which are basically kmz files. 
+That converter is part of the QLandkarte GT project. And that project is 
+distributed as binary for Windows and OSX as well as source or binary on 
+various Linux distributions. Using precompiled libraries drastically cuts down 
+the maintenance effort for the Windows binary.
+
+-------- Original-Nachricht --------
+&gt; Datum: Wed, 30 Mar 2011 20:18:35 +0200
+&gt; Von: Pierre Joye &lt;pierre.php%gmail.com@localhost&gt;
+&gt; An: Oliver Eichler &lt;oliver.eichler%gmx.de@localhost&gt;
+&gt; CC: libzip-discuss%nih.at@localhost
+&gt; Betreff: Re: Binaries for Visual Studio 2008?
+
+&gt; hi,
+&gt; 
+&gt; You need the development files from zlib. It is very straightforward
+&gt; to compile zlib yourself. Go to the project page, fetch the src
+&gt; archive, and follow the README instructions. Then you can point cmake
+&gt; to the right place using the INCLUDE and LIBRARY environment
+&gt; variables.
+&gt; 
+&gt; Cheers,
+&gt; 
+&gt; On Wed, Mar 30, 2011 at 8:01 PM, Oliver Eichler 
+&gt; &lt;oliver.eichler%gmx.de@localhost&gt;
+&gt; wrote:
+&gt; &gt; Hi
+&gt; &gt;
+&gt; &gt; any chance to get libzip compiled as static library? I failed today with
+&gt; &gt; latest repository version.
+&gt; &gt;
+&gt; &gt; One problem seem to be the dependencies to zlib. I downloaded the zlib
+&gt; &gt; binaries from this site: <a  rel="nofollow" href="http://www.winimage.com/zLibDll/index.html">http://www.winimage.com/zLibDll/index.html</a>. I
+&gt; &gt; manually set the inlcude path and the static lib in cmake. However the
+&gt; &gt; linker misses all symbols from the zlib.
+&gt; &gt;
+&gt; &gt; And there where a couple of missing functions like getopt. Thus my
+&gt; &gt; questions: What are the prerequisites? Is it possible to use the
+&gt; Microsoft
+&gt; &gt; compiler? Or is it mingw exclusive? Is it possible to create a static
+&gt; lib
+&gt; &gt; with all other libs like zlib included? That would help a lot.
+&gt; &gt;
+&gt; &gt; Thanks
+&gt; &gt;
+&gt; &gt; Oliver
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt; 
+&gt; 
+&gt; -- 
+&gt; Pierre
+&gt; 
+&gt; @pierrejoye | <a  rel="nofollow" href="http://blog.thepimp.net">http://blog.thepimp.net</a> | <a  rel="nofollow" href="http://www.libgd.org">http://www.libgd.org</a>
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<!-- -->
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<!-- -->
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<p class="nih credits">
+  Made by <a href="http://www.mhonarc.org/">MHonArc</a>.
+</p>
+<!--X-User-Footer-End-->
+<!--#include virtual="/templates/footer.html" -->

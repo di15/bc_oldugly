@@ -1,0 +1,63 @@
+
+Install codeblocks:
+
+sudo apt-get install codeblocks
+
+
+Install OpenGL headers and libraries:
+
+sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+
+
+Install C++ libraries:
+
+sudo apt-get install libstdc++6
+sudo apt-get install build-essential
+
+
+JPEG lib:
+
+sudo apt-get install libjpeg-dev
+
+
+PNG lib:
+
+sudo apt-get install libpng12-dev
+
+
+SDL:
+
+sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev
+
+
+libzip:
+
+sudo apt-get install libzip-dev
+
+
+zlib:
+
+sudo apt-get install zlibc zlib1g zlib1g-dev
+
+
+OpenGL:
+
+sudo apt-get install mesa-common-dev
+sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev
+sudo apt-get install freeglut3-dev
+
+
+Follow instructions to get SDL 2:
+
+http://askubuntu.com/questions/344512/what-is-the-general-procedure-to-install-development-libraries-in-ubuntu
+
+SDL2 is included in libs/linux/
+
+
+Crytographic library:
+
+sudo apt-get install libgcrypt-devel
+
+
+
+

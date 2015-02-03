@@ -1,0 +1,988 @@
+# depslib dependency file v1.0
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/debug.cpp
+	"debug.h"
+	"utils.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/debug.h
+	"platform.h"
+
+1387769942 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/platform.h
+	"TargetConditionals.h"
+	<winsock2.h>
+	<windows.h>
+	<mmsystem.h>
+	<GL/glx.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glext.h>
+	<gl/glaux.h>
+	<commdlg.h>
+	<linux/limits.h>
+	<gcrypt.h>
+	<sys/time.h>
+	<sys/types.h>
+	<dirent.h>
+	<string>
+	<sstream>
+	<stdio.h>
+	<stdlib.h>
+	<vector>
+	<list>
+	<set>
+	<fstream>
+	<iostream>
+	<math.h>
+	<jpeglib.h>
+	<png.h>
+	<zip.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+
+1387771856 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/utils.h
+	"platform.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/billboard.cpp
+	"billboard.h"
+	"../platform.h"
+	"../math/3dmath.h"
+	"../texture.h"
+	"particle.h"
+	"shader.hpp"
+	"../utils.h"
+	"../math/vec3f.h"
+	"../math/camera.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/billboard.h
+	"../platform.h"
+	"../math/3dmath.h"
+	"../math/vec3f.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/3dmath.h
+	"../platform.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/vec3f.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/texture.h
+	"platform.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/particle.h
+	"../math/3dmath.h"
+	"../math/vec3f.h"
+	"../utils.h"
+
+1387770357 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/shader.h
+	"../platform.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/camera.h
+	"vec2f.h"
+	"vec3f.h"
+	"quaternion.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/vec2f.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/quaternion.h
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/foliage.cpp
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/ms3d.cpp
+	"ms3d.h"
+	"../texture.h"
+	"../utils.h"
+	"model.h"
+	"../platform.h"
+	"../math/vec3f.h"
+	"../math/quaternion.h"
+	"../math/matrix.h"
+	"../math/3dmath.h"
+	"../math/matrix.h"
+	"vertexarray.h"
+	"../save/saveedm.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/ms3d.h
+	"../platform.h"
+	"../math/3dmath.h"
+	"../math/vec3f.h"
+	"../math/vec2f.h"
+	"../math/matrix.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/matrix.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/model.h
+	"../platform.h"
+	"ms3d.h"
+	"../math/vec3f.h"
+	"../math/vec2f.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/vertexarray.h
+	"../platform.h"
+	"../draw/ms3d.h"
+	"../math/vec3f.h"
+	"../math/vec2f.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/saveedm.h
+	"../platform.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/model.cpp
+	"../platform.h"
+	"../math/3dmath.h"
+	"model.h"
+	"../texture.h"
+	"../utils.h"
+	"../gui/gui.h"
+	"shader.hpp"
+	"../debug.h"
+	"vertexarray.h"
+
+1387771764 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/gui.h
+	"../platform.h"
+	"../math/3dmath.h"
+	"view.h"
+	"image.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"dropdowns.h"
+	"editbox.h"
+	"hscroller.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+	"frame.h"
+	"viewportw.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/view.h
+	"widget.h"
+
+1387770901 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/widget.h
+	"../utils.h"
+	"../texture.h"
+	"font.h"
+	"../draw/shader.hpp"
+	"../window.h"
+	"draw2d.h"
+
+1387766604 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/font.h
+	"../platform.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/window.h
+	"platform.h"
+	"math/3dmath.h"
+	"math/vec2i.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/vec2i.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/draw2d.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/image.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/barbutton.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/button.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/checkbox.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/dropdowns.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/editbox.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/hscroller.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/insdraw.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/link.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/listbox.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/text.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/textarea.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/textblock.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/touchlistener.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/frame.h
+	"widget.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/viewportw.h
+	"widget.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/particle.cpp
+	"particle.h"
+	"../texture.h"
+	"../platform.h"
+	"billboard.h"
+	"../math/vec3f.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/projectile.cpp
+	"projectile.h"
+	"../texture.h"
+	"../utils.h"
+	"../draw/shader.hpp"
+	"../platform.h"
+	"../math/camera.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/projectile.h
+	"../platform.h"
+	"../math/3dmath.h"
+	"../math/vec3f.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/shader.cpp
+	"../utils.h"
+	"../draw/shader.hpp"
+	"../platform.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/shadow.cpp
+	"../utils.h"
+	"shadow.h"
+	"shader.hpp"
+	"../math/3dmath.h"
+	"model.h"
+	"particle.h"
+	"projectile.h"
+	"../debug.h"
+	"billboard.h"
+	"../platform.h"
+	"../window.h"
+	"../math/vec3f.h"
+	"../math/matrix.h"
+	"model.h"
+	"../sim/sim.h"
+	"model.h"
+	"../sim/map.h"
+	"../math/camera.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/shadow.h
+	"../math/vec3f.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/sim.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/map.h
+	"../platform.h"
+	"../math/vec3f.h"
+	"../math/brush.h"
+	"../math/polygon.h"
+	"../math/triangle.h"
+	"../math/brush.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/brush.h
+	"vec3f.h"
+	"plane.h"
+	"polygon.h"
+	"triangle.h"
+	"brushside.h"
+	"../sim/door.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/plane.h
+	"vec3f.h"
+	"physics.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/physics.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/polygon.h
+	"../platform.h"
+	"vec3f.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/triangle.h
+	"vec3f.h"
+	"vec2f.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/brushside.h
+	"vec3f.h"
+	"plane.h"
+	"polygon.h"
+	"triangle.h"
+	"../draw/model.h"
+	"../draw/vertexarray.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/door.h
+	"../math/vec3f.h"
+	"../math/3dmath.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/sortb.cpp
+	"sortb.h"
+	"../math/brush.h"
+	"../sim/map.h"
+	"../save/edmap.h"
+	"../math/camera.h"
+	"../math/3dmath.h"
+	"../platform.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/sortb.h
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/edmap.h
+	"../platform.h"
+	"../math/vec3f.h"
+	"../math/brush.h"
+	"../math/polygon.h"
+	"../math/triangle.h"
+	"../sim/door.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/vertexarray.cpp
+	"vertexarray.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/water.cpp
+	"water.h"
+	"heightmap.h"
+	"../shader.hpp"
+	"../math/3dmath.h"
+	"../math/vec3f.h"
+	"../math/vec2f.h"
+	"../platform.h"
+	"../shadow.h"
+	"../texture.h"
+	"../utils.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/water.h
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/barbutton.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+	"gui.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/button.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/checkbox.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/draw2d.cpp
+	"../platform.h"
+	"../draw/shader.hpp"
+	"draw2d.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/dropdownl.cpp
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/dropdownm.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdownm.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/dropdownm.h
+	"widget.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/dropdowns.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387714650 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/editbox.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+	"gui.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/font.cpp
+	"../platform.h"
+	"font.h"
+	"../texture.h"
+	"../draw/shader.hpp"
+	"../window.h"
+	"../utils.h"
+	"gui.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/frame.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+	"frame.h"
+	"../platform.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/gui.cpp
+	"../draw/shader.hpp"
+	"gui.h"
+	"../texture.h"
+	"font.h"
+	"../math/3dmath.h"
+	"../platform.h"
+	"../window.h"
+	"draw2d.h"
+	"../draw/shadow.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/hscroller.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/image.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/insdraw.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/link.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387767388 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/listbox.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/text.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387714734 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/textarea.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/textblock.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/touchlistener.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/view.cpp
+	"gui.h"
+	"../texture.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/viewportw.cpp
+	"widget.h"
+	"barbutton.h"
+	"button.h"
+	"checkbox.h"
+	"editbox.h"
+	"dropdowns.h"
+	"hscroller.h"
+	"image.h"
+	"insdraw.h"
+	"link.h"
+	"listbox.h"
+	"text.h"
+	"textarea.h"
+	"textblock.h"
+	"touchlistener.h"
+	"viewportw.h"
+	"../platform.h"
+	"../window.h"
+	"../draw/shader.hpp"
+	"gui.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/gui/widget.cpp
+	"widget.h"
+	"gui.h"
+	"font.h"
+	"../window.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/linux.c
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/3dmath.cpp
+	"3dmath.h"
+	"../utils.h"
+	"physics.h"
+	"../window.h"
+	"../gui/gui.h"
+	"vec3f.h"
+	"camera.h"
+	"quaternion.h"
+	"vec4f.h"
+	"matrix.h"
+	"plane.h"
+	"../window.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/vec4f.h
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/brush.cpp
+	"../platform.h"
+	"brush.h"
+	"plane.h"
+	"3dmath.h"
+	"line.h"
+	"polygon.h"
+	"../utils.h"
+	"3dmath.h"
+	"../sim/map.h"
+	"../save/edmap.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/line.h
+	"vec3f.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/brushside.cpp
+	"../platform.h"
+	"brushside.h"
+	"plane.h"
+	"../draw/shader.hpp"
+	"../texture.h"
+	"../utils.h"
+	"brush.h"
+	"../save/compilemap.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/compilemap.h
+	"../platform.h"
+	"edmap.h"
+	"../math/triangle.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/camera.cpp
+	"camera.h"
+	"3dmath.h"
+	"physics.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/edge.cpp
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/frustum.cpp
+	"frustum.h"
+	"../platform.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/frustum.h
+	"../platform.h"
+	"3dmath.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/line.cpp
+	"line.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/matrix.cpp
+	"matrix.h"
+	"../platform.h"
+	"quaternion.h"
+	"vec4f.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/physics.cpp
+	"../platform.h"
+	"physics.h"
+	"vec3f.h"
+	"triangle.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/plane.cpp
+	"vec3f.h"
+	"plane.h"
+	"physics.h"
+	"3dmath.h"
+	"../utils.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/polygon.cpp
+	"polygon.h"
+	"3dmath.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/quaternion.cpp
+	"../platform.h"
+	"quaternion.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/vec3f.cpp
+	"../platform.h"
+	"vec3f.h"
+	"matrix.h"
+	"physics.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/math/vec4f.cpp
+	"../platform.h"
+	"matrix.h"
+	"vec4f.h"
+	"vec3f.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/phys/collider.cpp
+
+1387767423 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/platform.cpp
+	"platform.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/compilemap.cpp
+	"compilemap.h"
+	"../utils.h"
+	"savemap.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/savemap.h
+	"../platform.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/edmap.cpp
+	"edmap.h"
+	"../draw/shader.hpp"
+	"../texture.h"
+	"../utils.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/save.cpp
+	"../sim/map.h"
+	"save.h"
+	"../platform.h"
+	"../math/polygon.h"
+	"../texture.h"
+	"../draw/vertexarray.h"
+	"../utils.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/save.h
+	"../platform.h"
+
+1387767495 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/saveedm.cpp
+	"../sim/map.h"
+	"save.h"
+	"../platform.h"
+	"../math/polygon.h"
+	"../texture.h"
+	"../draw/vertexarray.h"
+	"../utils.h"
+	"saveedm.h"
+	"../save/edmap.h"
+	"savemap.h"
+
+1387767556 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/save/savemap.cpp
+	"savemap.h"
+	"compilemap.h"
+	"edmap.h"
+	"../texture.h"
+	"save.h"
+	"saveedm.h"
+	"../sim/map.h"
+	"../utils.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/battlecomp.cpp
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/character.cpp
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/door.cpp
+	"../save/edmap.h"
+	"door.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/entity.cpp
+	"entity.h"
+	"entitytype.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/entity.h
+	"../math/vec3f.h"
+	"../math/camera.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/entitytype.h
+	"../platform.h"
+	"../math/vec3f.h"
+	"../sound.h"
+	"../phys/collider.h"
+	"../draw/model.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sound.h
+	<vector>
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/phys/collider.h
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/entitytype.cpp
+	"entitytype.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/map.cpp
+	"map.h"
+	"../draw/shader.hpp"
+	"../texture.h"
+	"../utils.h"
+
+1387770901 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/selection.cpp
+	"../draw/shader.hpp"
+	"../texture.h"
+	"entity.h"
+	"entitytype.h"
+	"../platform.h"
+	"../math/matrix.h"
+	"../window.h"
+	"../math/plane.h"
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/sim.cpp
+	"../draw/model.h"
+	"../math/brush.h"
+	"entitytype.h"
+	"entity.h"
+	"../texture.h"
+	"selection.h"
+
+1387713406 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/selection.h
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sim/statesoldier.cpp
+
+1387713406 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/sound.cpp
+	"sound.h"
+	"utils.h"
+	"platform.h"
+
+1387767699 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/texture.cpp
+	"platform.h"
+	"texture.h"
+	"draw/model.h"
+	"gui/gui.h"
+	"utils.h"
+
+1387769746 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/utils.cpp
+	"utils.h"
+	"platform.h"
+
+1387770357 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/draw/shader.hpp
+	"../platform.h"
+
+1387770961 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/common/window.cpp
+	"window.h"
+	"texture.h"
+	"draw/shader.hpp"
+	"gui/gui.h"
+	"gui/font.h"
+	"draw/shadow.h"
+	"math/3dmath.h"
+	"utils.h"
+
+1387713407 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/battlecompworlded/main.cpp
+	<iostream>
+
+1387713407 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/undo.cpp
+	"undo.h"
+	"../common/draw/sortb.h"
+	"../common/math/camera.h"
+	"../common/utils.h"
+	"../common/save/edmap.h"
+
+1387713407 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/undo.h
+	"../common/math/brush.h"
+	"../common/sim/map.h"
+	"../common/platform.h"
+
+1387771232 source:/home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/wegui.cpp
+	"wemain.h"
+	"../common/math/3dmath.h"
+	"../common/gui/gui.h"
+	"../common/texture.h"
+	"wegui.h"
+	"../common/window.h"
+	"weviewport.h"
+	"wesim.h"
+	"../common/save/save.h"
+	"../common/save/saveedm.h"
+	"../common/sim/sim.h"
+	"../common/draw/sortb.h"
+	"undo.h"
+	"../common/save/compilemap.h"
+	"../common/draw/shadow.h"
+
+1387713407 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/wemain.h
+	"../common/platform.h"
+
+1387713407 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/wegui.h
+	"../common/platform.h"
+
+1387713407 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/weviewport.h
+	"../common/math/3dmath.h"
+	"../common/math/camera.h"
+	"../common/math/vec2i.h"
+
+1387713407 /home/polyfrag/Desktop/Projects/BattleComputer/aaa000/worlded/wesim.h
+	"../common/sim/map.h"
+	"../common/save/edmap.h"
+

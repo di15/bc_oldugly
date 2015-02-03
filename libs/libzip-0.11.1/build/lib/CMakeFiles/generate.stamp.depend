@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/libzip-0.11.1/lib/CMakeLists.txt
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CheckFunctionExists.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeExpandImportedTargets.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake

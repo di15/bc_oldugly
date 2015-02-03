@@ -1,0 +1,7 @@
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/lib/zlib.lib
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/bin/zlib.dll
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/lib/zlibstatic.lib
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/include/zconf.h
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/include/zlib.h
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/share/man/man3/zlib.3
+C:/Users/polyfrag/Desktop/Projects/BattleComputer/aaa000/libs/win/installed/zlib/share/pkgconfig/zlib.pc

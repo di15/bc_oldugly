@@ -1,0 +1,410 @@
+
+<!-- saved from url=(0070)http://www.misofruit.co.kr/seojewoo/programming/opengl/opengl-12-6.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-949">
+<!-- 검색 엔진은 아래처럼 title과 meta 태그의 keywords를 검색하게 됩니다. 
+     하지만 검색이 이루어진 다음에 유저가 이런 내용이 없으면 실망하고 다시는 안오겠죠? -->
+<title>퀘이크3의 맵 에디터인 라디엔트로  만들어 놓은 bsp</title>
+<meta name="Subject" content="퀘이크3의 맵 에디터인 라디엔트로  만들어 놓은 bsp">
+<meta name="description" content="퀘이크3의 맵 에디터인 라디엔트로  만들어 놓은 bsp">
+<meta name="keywords" content="퀘이크3의 맵 에디터인 라디엔트로  만들어 놓은 bsp">
+
+<meta name="Author" content="쌈닭인디유">
+<script language="JavaScript"><!--
+function namosw_init_float_layers()
+{
+  var name;
+  var layer;
+  var i;
+  var j;
+
+  var is_ns4 = navigator.appName.indexOf('Netscape', 0) != -1 && !document.getElementById;
+  var is_ns6 = (navigator.appName.indexOf('Netscape', 0) != -1 && document.getElementById);
+
+  j = 0;
+  document._float_layers = new Array(Math.max(1, namosw_init_float_layers.arguments.length/2));
+  for (i = 0; i < namosw_init_float_layers.arguments.length; i += 2) {
+    name  = namosw_init_float_layers.arguments[i];
+    if (name == '')
+      return;
+
+    if (is_ns4) {
+      layer = document.layers[name];
+      layer._fl_pos_left = layer.left;
+      layer._fl_pos_top  = layer.top;
+    } else if (is_ns6) {
+      layer = document.getElementById(name);
+      layer._fl_pos_left = parseInt(layer.style.left);
+      layer._fl_pos_top  = parseInt(layer.style.top);
+    } else {
+      layer = document.all[name];
+      layer._fl_pos_left = layer.style.pixelLeft;
+      layer._fl_pos_top  = layer.style.pixelTop;
+    }
+
+    layer._fl_pos = namosw_init_float_layers.arguments[i+1];
+    if (layer)
+      document._float_layers[j++] = layer;
+  }
+
+  document._fl_interval = setInterval('namosw_process_float_layers()', 200);
+}
+
+function namosw_page_width()
+{
+  var is_ns4 = navigator.appName.indexOf('Netscape', 0) != -1 && !document.getElementById;
+  var is_ns6 = (navigator.appName.indexOf('Netscape', 0) != -1 && document.getElementById);
+
+  return (is_ns4 || is_ns6) ? innerWidth  : document.body.clientWidth;
+}
+
+function namosw_page_height()
+{
+  var is_ns4 = navigator.appName.indexOf('Netscape', 0) != -1 && !document.getElementById;
+  var is_ns6 = (navigator.appName.indexOf('Netscape', 0) != -1 && document.getElementById);
+
+  return (is_ns4 || is_ns6) ? innerHeight : document.body.clientHeight;
+}
+
+function namosw_process_float_layers()
+{
+  var is_ns4 = navigator.appName.indexOf('Netscape', 0) != -1 && !document.getElementById;
+  var is_ns6 = (navigator.appName.indexOf('Netscape', 0) != -1 && document.getElementById);
+
+  if (document._float_layers) {
+      var i;
+      var layer;
+      for (i = 0; i < document._float_layers.length; i++) {
+	  layer = document._float_layers[i];
+	  if (is_ns4) {
+	    if (layer._fl_pos == 1)
+	      layer.left = layer._fl_pos_left + window.pageXOffset;
+	    else if (layer._fl_pos == 2 || layer._fl_pos == 5) 
+	      layer.left = window.pageXOffset;
+	    else if (layer._fl_pos == 3 || layer._fl_pos == 6) 
+	      layer.left = window.pageXOffset + (namosw_page_width() - layer.clip.width)/2;
+	    else
+	      layer.left = window.pageXOffset + namosw_page_width() - layer.clip.width - 16;
+	    if (layer._fl_pos == 1)
+	      layer.top = layer._fl_pos_top + window.pageYOffset;
+	    else if (layer._fl_pos == 2 || layer._fl_pos == 3 || layer._fl_pos == 4)
+	      layer.top = window.pageYOffset;
+	    else
+	      layer.top  = window.pageYOffset + namosw_page_height() - layer.clip.height;
+	  } else if (is_ns6) {
+	    if (layer._fl_pos == 1)
+	      layer.style.left = layer._fl_pos_left + window.pageXOffset;
+	    else if (layer._fl_pos == 2 || layer._fl_pos == 5)
+	      layer.style.left = window.pageXOffset;
+	    else if (layer._fl_pos == 3 || layer._fl_pos == 6)
+	      layer.style.left = window.pageXOffset + (namosw_page_width() - parseInt(layer.style.width))/2;
+	    else
+	      layer.style.left = window.pageXOffset + namosw_page_width()  - parseInt(layer.style.width);
+	    if (layer._fl_pos == 1)
+	      layer.style.top = layer._fl_pos_top + document.body.scrollTop;
+	    else if (layer._fl_pos == 2 || layer._fl_pos == 3 || layer._fl_pos == 4)
+	      layer.style.top = window.pageYOffset;
+	    else
+	      layer.style.top  = window.pageYOffset + namosw_page_height() - parseInt(layer.style.height);
+          }
+          else {
+	    if (layer._fl_pos == 1)
+	      layer.style.pixelLeft = layer._fl_pos_left + document.body.scrollLeft;
+	    else if (layer._fl_pos == 2 || layer._fl_pos == 5)
+	      layer.style.pixelLeft = document.body.scrollLeft;
+	    else if (layer._fl_pos == 3 || layer._fl_pos == 6)
+	      layer.style.pixelLeft = document.body.scrollLeft + (namosw_page_width() - layer.style.pixelWidth)/2;
+	    else
+	      layer.style.pixelLeft = document.body.scrollLeft + namosw_page_width()  - layer.style.pixelWidth;
+	    if (layer._fl_pos == 1)
+	      layer.style.pixelTop = layer._fl_pos_top + document.body.scrollTop;
+	    else if (layer._fl_pos == 2 || layer._fl_pos == 3 || layer._fl_pos == 4)
+	      layer.style.pixelTop = document.body.scrollTop;
+	    else
+	      layer.style.pixelTop  = document.body.scrollTop  + namosw_page_height() - layer.style.pixelHeight;
+         }
+      }
+  }
+}
+
+// -->
+</script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" onload="namosw_init_float_layers(&#39;layer1&#39;, 7);">
+<center>&nbsp;</center>
+<div id="layer1" style="width: 87px; height: 49px; position: absolute; left: 1012px; top: 1840px; z-index: 1;">
+    <p><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/icon2.gif" width="38" height="31" border="0"></p>
+</div>
+<p align="center"><font size="6"><b>Removing illegal geometry from data imported from quake 
+map files</b><font size="3"><br><b>By Gerald Filimonov</b><br><b><a href="mailto:k9megahertz@yahoo.com">k9megahertz@yahoo.com</a></b><br></font></font></p>
+<font size="6"><font size="3"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;One 
+of the cool things about using Quake .map files when writing your own 3d engine 
+is the availability and number of .map editors there are out on the net. This 
+can really cut down the burden of writing your own 3d engine because you don't 
+have to write your own editor to create test maps. While this sounds like a good 
+plan at first, this can turn out to also be a burden as well. Due to the way 
+that quake maps were designed the .map files that describe them need to be 
+parsed and processed to extract the polygons that represent the world. After 
+doing so you end up with a set a polygons that describe and depict the game 
+world in the .map file and then some. If you take a look at the set of polygons 
+you'll soon begin to realize that there are polygons that intersect other 
+polygons, polygons that can never been seen by the viewer, and polygons that 
+face other polygons but lie on the same plane. If your planning on constructing 
+a BSP with this set of polygons then they best were cleaned up otherwise you'll 
+just end up having major problems later on. Its in this document that I plan to 
+address this issue and explain a method to remove all of the "illegal geometry" 
+from the set of polygons. Note: I'm only going to cover the actual removal of 
+the illegal geometry and not the removal of the outfacing polygons that reside 
+in the outside leaves of the BSP, nor am in going to cover the actual parsing 
+and extraction of the polygon data from the .map files.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Ok, now 
+that I've got that boring "this is the reason I'm writing this document" text 
+out of the way, let's get down to business.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;First off, quake .map 
+files are made up of brushes. For the sake of simplicity most if not all of my 
+diagrams will be in 2D with a top-down view perspective. Lets take a look at a 
+simple set of polygons that have been extracted from a quake .map 
+file.<br><br><br>
+</font></font><center><font size="6"><font size="3"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig1.gif" width="200" height="200"></font></font><pre><font size="6"><font size="3"><b>Fig1</b></font></font></pre></center><font size="6"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;As you can see our map is made up of four 
+brushes, nothing more than just a simple room. As you can also see we have some 
+illegal geometry in this map. I've highlighted these polygons in red. Note: 
+there are two illegal polygons for every red line, one for each brush that 
+touches each other, these polygons have their normals facing each 
+other.<br><br><br>
+</font></font><center><font size="6"><font size="3"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig2.gif" width="200" height="200"></font></font><pre><font size="6"><font size="3"><b>Fig2</b></font></font></pre></center><font size="6"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;What we wanna do is remove these polygons and 
+end up with the following result.<br><br><br>
+</font></font><center><font size="6"><font size="3"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig3.gif" width="200" height="200"></font></font><pre><font size="6"><font size="3"><b>Fig3</b></font></font></pre></center><font size="6"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;The way you get rid of these polygons is by 
+doing a Union set operation on all of the brushes. We loop through a list of all 
+the brushes and as we come to each one in the list, we do a union operation 
+using this brush and using each of the other brushes in the list. Here's some 
+pseudo code explaining this:<br><br><br><font color="#0000ff">for<font color="#000000"> (brush1=0; brush1&lt;numbrushes; brush1++) { <font color="#007f00">//loop<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for<font color="#000000"> (brush2=0; brush2&lt;numbrushes; brush2++) { <font color="#007f00">//loop<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> (brush1= =brush2) <font color="#007f00">// don't clip brush with 
+itself<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">continue<font color="#000000">;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> 
+(BrushesIntersect(Brush1,Brush2)= =true) <font color="#007f00">//see if brushes 
+intersect, if they do we need<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//to clip them, if they don't, move on.<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSGUnionBrushes(brush1,brush2);<font color="#007f00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//clip brush with other brush<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//brush has now been clipped 
+by all the other brushes so save the remaining polygon fragments<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//out to a final list<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;SavePolygonFragments(brush1);<br>}<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Your 
+actual routine is gonna be a bit more complex that this, but this is the general 
+idea of how it works. You'll probably wanna make a copy of the polygons in 
+brush1 and clip those rather than the original brush because you'll need it to 
+clip the other brushes later.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Ok let's take a closer look at how 
+the CSGUnionBrushes routine works. Let's start off with a simple test case and 
+work our way up. In this test case we have only 2 brushes and they are both 
+touching each other.<br><br><br>
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig4.gif" width="200" height="200"></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><pre><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><b>Fig4</b></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></pre></center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;Now one of the ways you can do CSG operations 
+is by using a BSP tree. This involves calculating a BSP tree for each brush and 
+pushing each of the polygons of the other brush through the BSP tree. Depending 
+on what kind of operation your doing (i.e. Union, Intersection, Subtraction, 
+Difference), you'll either keep the parts of the polygon that end up on the 
+inside or the outside of the brush. In the case of Union, any polygon remnant 
+that ends up inside the brush gets deleted. Now because were dealing with 
+brushes, they have a neat little property of them that will allow us to get away 
+with not having to calculate a BSP tree for each brush. This property is the 
+fact that all brushes are convex. Therefore the BSP tree for any brush will 
+always have the same structure. Take a look at the following BSP tree for a 
+brush.<br><br><br>
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig5.gif" width="200" height="200"></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><pre><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><b>Fig5</b></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></pre></center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;As you can see here, you'll always only have 
+1 polygon in front of a node and all the rest behind. No matter what kind of 
+brush you use the tree will always have this same structure. Now how does this 
+help us? It means that at anytime we have a fragment of a polygon end up in a 
+leaf or on the front side of a plane, we keep it, anything that's on the back 
+gets pushed down the tree further. If a fragment hits the solid node at the end, 
+it gets eaten by the solid node monster. =)<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Back to our simple 
+test case. Here we have two brushes, brush A and brush B. To do a union of these 
+two brushes, we take each polygon of Brush A and clip it against Brush B, 
+anything on the inside gets deleted, anything on the outside gets returned. Take 
+a look at the following diagram, ive numbered the polygons in brush A in black 
+and labled the planes of brush B in red.<br><br><br>
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig6.gif"></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><pre><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><b>Fig6</b></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></pre></center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;Now lets take polygon 0 and clip it with 
+Brush B. First off we take polygon 0 and compare it with plane A. As you can see 
+polygon 0 is on the front of plane A so we do nothing and just return polygon A 
+untouched. The same goes for polygons 1 and 2. Polygon 3 is a special case 
+though. It is coplanar with plane A. In this case we compare the normal with the 
+polygon with the normal of the plane. Since they are different, we treat the 
+polygon as if it was on the back side of the plane. This means we have to push 
+the polygon down the tree of brush B farther. The next node we come to is the 
+one that plane B occupies. Comparing polygon 3 with this plane we find that it 
+too lies behind the plane, so a pushin we will go. Next up is a comparison 
+between polygon 3 and plane C. As we can see polygon 3 is behind plane C as 
+well. Pushing down the tree deeper we come to plane D and again the polygon is 
+on the back side, so with a final push we push polygon 3 in the solid node at 
+the end of the tree. Here the solid node monster gobbles up the polygon and it 
+is never seen again.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Wow, we just eliminated one of our illegal 
+polygons! Pretty neat huh? Well don't get too excited yet, we still have a lot 
+of work do to, and I guess that means I got more writing to do as well 
+=).<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Since were only dealing with 2 brushes we only are gonna clip 
+Brush A with one other brush, Brush B. If we had 4 brushes in our map that all 
+intersected each other we would have clipped the polygons of Brush A with Brush 
+B and then taken these clipped polygons and clip them even further with Brush C 
+and clipped them even further still with Brush D. After the clipping with Brush 
+D we will have clipped all of the illegal geometry off of Brush A. We add these 
+remaining polygons to a master list and repeat the procedure with the next 
+brush.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Well now that we've clipped Brush A with Brush B, its time 
+to clip Brush B with Brush A. I've drawn a diagram to help us<br><br><br>
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig7.gif"></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><pre><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><b>Fig7</b></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></pre></center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;Starting off with polygon 0 we compare it 
+against plane A. Its behind plane A so we push it down the back of the tree and 
+move on to the next plane. Coming to plane B, polygon 0 is on the backside so we 
+keep on pushin', coming to plane C, polygon 0 is.....uh oh...Houston we have a 
+problem! Polygon 0 seems to span plane C. What we need to do here is split 
+polygon 0 in to two smaller fragments, one that's on the front of the plane and 
+one that's on the back. This is where things start to get confusing and messy. 
+Since the front part is on the front side of Plane C that means that were gonna 
+keep it. But what about the back part? Well we take it and push it down back 
+side to be compared against Plane D. Since this fragment is coplanar with plane 
+D we have compare the normals. If they are the same, well have to treat this as 
+a special case which ill get into later, but since they are different, we give 
+the fragment a final push down the backside to the solid node where it gets 
+eaten by the solid node monster and is deleted. We've now eliminated both of the 
+illegal polygons!.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Now im gonna stop right here for a second and 
+say that using linked lists and using a recursive function makes this pretty 
+straightforward to implement. In the above example we had a polygon that got 
+split into two smaller fragments, only one of which was returned as a keeper, 
+but in a bit well have a polygon case where we'll end up with 2 fragments that 
+need to be returned. Now the good thing about using linked lists here is that 
+you can simply chain the fragments together and just return the head fragment 
+and add it to master list and at the same time add all the fragments to the 
+list. Basically adding a linked list to a linked list. =)<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Ok, 
+let's keep moving. You can see from <b>fig7</b> that polygon 1 ends up on back 
+of planes A and B, but once we hit C the polygon ends up on the front, so its a 
+keeper.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon 2 is on the backside of Planes A and B but spans 
+plane C. So we split polygon 2 into two fragments, the front fragment 
+automatically gets returned but the back fragment has to be pushed down further. 
+The back fragment gets pushed to D, where it's found to be on the front of D so 
+it too gets returned. We return the fragment up a level in recursion, link it to 
+the front fragment, then return the front fragment with the back one piggybacked 
+on it all the way back up. Now there's a trick you can do here to reduce your 
+polycount a bit. If a polygon gets split, but nether fragment gets deleted you 
+can just return the original polygon. I do this in my program, and it works 
+quite nicely. =)<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon 3 is coplanar with A. Now this gets a 
+little tricky and I'm still working out the details of how this all works, but 
+basically the logic goes like this: If you run into a coplanar polygon on a 
+brush and you haven't clipped the brush against itself (which doesn't happen 
+because of the continue statement) then you keep any fragment that is on the 
+front of a coplanar plane, and get rid of the back, other wise you send the 
+fragment that is on the front down the back anyway to be clipped further. You do 
+this to clip coplanar polygons with each other. Now I'm not sure how it works, I 
+haven't worked it out on paper yet, but it works. I know it works because I had 
+to cheat and peek at the qbsp source and see how Carmack did it. =) So here's 
+the updated pseudo code:<br><br><br><font color="#0000ff">for<font color="#000000"> 
+(brush1=0; brush1&lt;numbrushes; brush1++) { <font color="#007f00">//loop<font color="#000000"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//copy the faces in brush1 in to a 
+temp list<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;CopyFacesFromBrushToList(brush1,templist1);<br>&nbsp;&nbsp;&nbsp;&nbsp;overwrite=<font color="#0000ff">false<font color="#000000">;<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for<font color="#000000"> (brush2=0; brush2&lt;numbrushes; brush2++) { <font color="#007f00">//loop<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> (brush1= =brush2) { <font color="#007f00">//dont clip brush with 
+itself<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overwrite=<font color="#0000ff">true<font color="#000000">; <font color="#007f00">//later brushes will 
+now overwrite<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">continue<font color="#000000">;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> (BrushesIntersect(Brush1,Brush2)) <font color="#007f00">//see if brushes intersect, if they do we need<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//to clip them, if they dont, move on.<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for<font color="#000000"> 
+(looppoly=0; looppoly &lt; brush-&gt;numpolys; looppoly++) 
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poly=AllocatePolygon();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyPolygon(poly,looppoly);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fragments=CSGClipPolygon(poly,brush2-&gt;polylist,overwrite);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//brush has now been clipped by all the other brushes so save the 
+remaining polygon fragments<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//out 
+to a final list<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;SavePolygonFragments(brush1);<br>}<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;I hope 
+you followed that, if not, re-read it and play with it until you do, otherwise 
+the rest of the document will be more difficult to 
+understand.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Ok, I'm gonna show you one final test case and then 
+turn you loose on your own. Let's look at the following diagram. This is 
+probably the one case you've been having the most trouble with.<br><br><br>
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig9.gif"></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><pre><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><b>Fig9</b></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></pre></center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;First we start off in the thick of it with 
+polygon 0 spanning plane A. We split this line into two fragments and recurse 
+with the back fragment pushing it down the tree to plane B. Here the fragment 
+falls on the back side of plane B so we push the fragment down even farther to 
+plane C. Here at plane C the fragment is again spanning the plane. We split the 
+fragment yet again and recurse down further with the back fragment. This back 
+fragment arrives at plane D's node. We compare the fragment and the plane and 
+find that the fragment is on the back side of D. Since the back side of D is a 
+solid node, the solid node monster gets lucky and snags himself a fine polygon 
+fragment meal. So we pop back up a recursion level and return the front fragment 
+that we got on plane C's node, return that up to plane B's node and then right 
+on up again to plane A's node where we have another front fragment, we link the 
+one we returned to the end of the one at plane A and then return the head 
+fragment with the other fragment piggybacked on it. We repeat this procedure 
+with polygons 1,2, and 3 of Brush A, and then well do the process over again 
+with polygons 0,1,2, and 3 of Brush B clipping them against the planes of Brush 
+A. After all is said and done we should end up with the final set of polygons as 
+shown here<br><br><br>
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><img src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/fig10.gif"></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><pre><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><b>Fig10</b></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></pre></center><font size="6"><font size="3"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#0000ff"><font color="#000000"><font color="#007f00"><font color="#000000"><font color="#007f00"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;Rather than give a full source code listing 
+I'm just going to list the two main functions that are needed to perform this 
+procedure. I've commented them pretty good so they should be self-explanatory, 
+if not just drop me a line and ill gladly answer any questions you have. First 
+up I wrote a CSGFaces() function. It's listing is as follows:<br><br><br><font color="#0000ff">int<font color="#000000"> CSGFaces()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;Brush3d 
+*b1=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Brush3d *b2=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d 
+*polylist1=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d *polylist2=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d 
+*frags=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d *looppoly=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d 
+*poly=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">int<font color="#000000"> 
+brushnum=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">int<font color="#000000"> 
+overwrite;<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for<font color="#000000"> 
+(b1=brushset-&gt;list; b1; b1=b1-&gt;next) {<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("Brushnum = 
+%d\n",brushnum);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brushnum++;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylist1=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//make a copy of the faces in brush b1, cause we dont wanna goof 
+with the originals<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyFacesToList(b1,&amp;polylist1);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overwrite=<font color="#0000ff">false<font color="#000000">;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//clip all the polygons in polylist1 by all the planes in brush 
+b2<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">for<font color="#000000"> 
+(b2=brushset-&gt;list; b2; b2=b2-&gt;next) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> (b1= =b2) 
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overwrite=<font color="#0000ff">true<font color="#000000">;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">continue<font color="#000000">;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//see if 
+brushes intersect<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">int<font color="#000000"> i=0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> ( (b1-&gt;min.x &gt; b2-&gt;max.x) || 
+(b1-&gt;max.x &lt; b2-&gt;min.x)) 
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> ( (b1-&gt;min.y &gt; b2-&gt;max.y) || 
+(b1-&gt;max.y &lt; b2-&gt;min.y)) 
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> ( (b1-&gt;min.z &gt; b2-&gt;max.z) || 
+(b1-&gt;max.z &lt; b2-&gt;min.z)) 
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">if<font color="#000000"> (i&gt;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">continue<font color="#000000">;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">//brushes have now been determined to intersect<font color="#000000"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//loop thu each polygon in 
+polylist1 and clip it<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//by each of the planes in the intersecting brush<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//keeping the part that falls 
+on the front of the plane<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (looppoly=polylist1; looppoly; 
+looppoly=looppoly-&gt;next) {<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//allocate a new polygon and copy it cause we dont wanna destroy 
+our orignal<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//well 
+need it later when its called to be used as a clipping plane.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poly=AllocatePolygon();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyPolygon(poly,looppoly);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Clip out polygon with the linked list of planes and return a 
+linked list<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//of 
+fragments<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frags=CSGClipPolygon 
+(&amp;poly,&amp;b2-&gt;polylist,overwrite);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//add these fragments 
+to polylist2<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddPolygonToList(&amp;polylist2,&amp;frags);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//free up our original list<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (polylist1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FreePolygonList(polylist1);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//copy the new list to the original list which will be used again 
+and clipped<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//by another 
+brush<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylist1=polylist2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polylist2=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//at this point the copy polygons of brush b1 have all been 
+clipped by<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//all the other 
+brushes, so add them to the final master list<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AddPolygonToList(&amp;finallist,&amp;polylist1);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;return 
+1;<br>}<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Next up we have the CSGClipPolygon 
+function:<br><br><br>Polygon3d* CSGClipPolygon (Polygon3d *poly,Polygon3d 
+*planepoly, int 
+clip)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d *retfrags=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d 
+*frontfrag=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Polygon3d *backfrag=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;Plane3d 
+plane;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;MakePlaneFromPoly(&amp;plane,planepoly);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;int 
+side=ClassifyPoly(&amp;plane,poly);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;switch( side ) {<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case PCS_FRONT:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//pretty simple 
+here, any polygon fragment thats on the front of a plane<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//gets returned<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+poly;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+PCS_BACK:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if we have more planes to compare 
+against, send the fragment down the tree farther<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if we dont, the fragment 
+will end up in a solid node and get eaten by the solid<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//node monster<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//can the back frag be pushed 
+further?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (planepoly-&gt;next) { //yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retfrags=CSGClipPolygon 
+(poly,planepoly-&gt;next, clip);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+retfrags;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else { //no<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;poly); //fragment gets eaten by the solid node monster<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poly=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL; //nothing to 
+return =(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case PCS_SPANNING:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//first off we split the polygon into two fragments<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//the front part gets returned 
+automatically so we dont need to worry about it<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//the back part does need to 
+be dealt with tho<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//we 
+push the back frag down the tree farther where it could possibly get split 
+up<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//even more<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//we compare the results of 
+the push with the original back fragment,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if they are the same that 
+means that the backfragment WAS NOT split up more<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//and we can just return the 
+original<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if they are 
+different, that means that the back fragement WAS split up more<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//in this case we link the 
+results of the push to the front fragment<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//and return the front 
+fragment with the rest piggybacked on it<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SplitPoly(&amp;plane,poly,&amp;frontfrag,&amp;backfrag);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//can the back frag be pushed further?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(planepoly-&gt;next) { //back frag CAN be pushed 
+further<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retfrags=CSGClipPolygon 
+(backfrag,planepoly-&gt;next,clip);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//was 
+back frag divided more?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (retfrags!=backfrag) { // yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;poly); //delete the original polygon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poly=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frontfrag-&gt;next=retfrags; 
+//piggyback the back fragments on to the front<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return frontfrag; //and return them<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else { // no<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;backfrag); //delete the front and back fragments<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;frontfrag);//cause if u put them together u end up with poly<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backfrag=frontfrag=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return poly; //so just 
+return poly<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else { //back frag CANNOT 
+be pushed further<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;poly); //since the backfrag ends up in a solid node<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//it gets eaten by the solid node monster<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//this means that the original poly cant be returned so<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//it gets deleted<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;backfrag); //since the back frag got eaten, delete it<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poly=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backfrag=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return frontfrag;//only 
+thing left to return is the front frag<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case PCS_COINCENDENT:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//polygon is coincendent with the plane<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//compare the normals<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if the polygon normal is the 
+same as the plane, and clip hasnt been set yet<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//just return the polygon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+((poly-&gt;PolyNormal.x= =planepoly-&gt;PolyNormal.x) 
+&amp;&amp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(poly-&gt;PolyNormal.y= 
+=planepoly-&gt;PolyNormal.y) 
+&amp;&amp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(poly-&gt;PolyNormal.z= 
+=planepoly-&gt;PolyNormal.z)) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!clip)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return poly;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if we 
+get here, either the polygons normal differed from the plane<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//or clip wasnt set to 
+true<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//either way if we 
+can push the polygon down the tree further, do so, if not, delete it<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//can we go further?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(planepoly-&gt;next) { //yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retfrags=CSGClipPolygon 
+(poly,planepoly-&gt;next, clip);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else { //no<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeletePolygon(&amp;poly);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poly=NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+NULL;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;return 
+retfrags;<br><br>}<br>&nbsp;&nbsp;&nbsp;&nbsp;As you can see it's quite a beast.<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Well 
+I hope this document helps give you a better understanding of how to remove the 
+illegal geometry from imported .map files. I'm sure I could have done a much 
+better job on this document, possibly by explaining things a bit better, or by 
+drawing more detailed diagrams, but this isn't too bad for a days work. Again, 
+if you have any questions, comments, suggestions, flames, and/or ideas you can 
+just send them to /dev/null. Weeeeelllllll, ok, Ill let you send them to me I 
+guess =) </font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font>
+<script src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/log.php"></script><script language="javascript" id="log_script" src="./퀘이크3의 맵 에디터인 라디엔트로 만들어 놓은 bsp_files/weblog.js"></script>
+
+
+</body></html>

@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/ -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/application-730e61df341a36acb64cafcaf2a2f82c.js"></script>
+<meta charset="UTF-8">
+<title>Building Static libjpeg 8d with MSVC 2012 | BugbeeBox( void )</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/style.css">
+<link rel="pingback" href="http://bugbeebox.com/xmlrpc.php">
+		<script src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/quant.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/tags.js"></script><script src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/remote-login.php" type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel="alternate" type="application/rss+xml" title="BugbeeBox( void ) » Feed" href="http://bugbeebox.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="BugbeeBox( void ) » Comments Feed" href="http://bugbeebox.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="BugbeeBox( void ) » Building Static libjpeg 8d with MSVC 2012 Comments Feed" href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+function addLoadEvent(func){var oldonload=window.onload;if(typeof window.onload!='function'){window.onload=func;}else{window.onload=function(){oldonload();func();}}}
+/* ]]> */
+</script>
+<link rel="stylesheet" id="all-css-0" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/saved_resource" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var LoggedOutFollow = {"invalid_email":"Your subscription did not succeed, please try again with a valid email address."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/saved_resource(1)"></script>
+<link rel="stylesheet" id="all-css-0" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/style(1).css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='http://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://jabugbee.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://jabugbee.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="next" title="Building Static libtiff 4.0.3 with MSVC 2012" href="http://bugbeebox.com/2012/11/18/building-libtiff-4-0-3-with-msvc-2012/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void ).htm">
+<link rel="shortlink" href="http://wp.me/p2UdTG-3v">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&url=http%3A%2F%2Fbugbeebox.com%2F2012%2F11%2F18%2Fbuilding-libjpeg-8d-with-msvc-2012%2F&for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&url=http%3A%2F%2Fbugbeebox.com%2F2012%2F11%2F18%2Fbuilding-libjpeg-8d-with-msvc-2012%2F&for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building Static libjpeg 8d with MSVC 2012">
+<meta property="og:url" content="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/">
+<meta property="og:description" content="This post will explain how to obtain and build the libjpeg C programming library from source, using MS Visual Studio 2012 on Windows 7. The result will be a static release version that you can use ...">
+<meta property="og:site_name" content="BugbeeBox( void )">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@wordpressdotcom">
+<link rel="shortcut icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311976025g" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311976025g" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1355642671g">
+<link rel="openid.server" href="http://jabugbee.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://jabugbee.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://bugbeebox.com/osd.xml" title="BugbeeBox( void )">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+		<style>
+		/* <![CDATA[ */
+		/* Block: reblog */
+		
+		.reblog-from img                   { margin: 0 10px 0 0; vertical-align: middle; padding: 0; border: 0; }
+		.reblogger-note img.avatar         { float: left; padding: 0; border: 0; }
+		.reblogger-note-content            { margin: 0 0 20px; }
+		.reblog-post .wpcom-enhanced-excerpt-content { border-left: 3px solid #eee; padding-left: 15px; }
+		.reblog-post ul.thumb-list         { display: block; list-style: none; margin: 2px 0; padding: 0; clear: both; }
+		.reblog-post ul.thumb-list li      { display: inline; margin: 0; padding: 0 1px; border: 0; }
+		.reblog-post ul.thumb-list li a    { margin: 0; padding: 0; border: 0; }
+		.reblog-post ul.thumb-list li img  { margin: 0; padding: 0; border: 0; }
+		
+		.reblog-post .wpcom-enhanced-excerpt { clear: both; }
+		
+		.reblog-post .wpcom-enhanced-excerpt address,
+		.reblog-post .wpcom-enhanced-excerpt li,
+		.reblog-post .wpcom-enhanced-excerpt h1,
+		.reblog-post .wpcom-enhanced-excerpt h2,
+		.reblog-post .wpcom-enhanced-excerpt h3,
+		.reblog-post .wpcom-enhanced-excerpt h4,
+		.reblog-post .wpcom-enhanced-excerpt h5,
+		.reblog-post .wpcom-enhanced-excerpt h6,
+		.reblog-post .wpcom-enhanced-excerpt p { font-size: 100% !important; }
+		
+		.reblog-post .wpcom-enhanced-excerpt blockquote,
+		.reblog-post .wpcom-enhanced-excerpt pre,
+		.reblog-post .wpcom-enhanced-excerpt code,
+		.reblog-post .wpcom-enhanced-excerpt q { font-size: 98% !important; }
+		
+
+		/* ]]> */
+		</style>
+		<meta name="application-name" content="BugbeeBox( void )"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="&quot;What I cannot create, I do not understand.&quot; -Feynman"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://bugbeebox.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="title" content="Building Static libjpeg 8d with MSVC 2012 | BugbeeBox( void ) on WordPress.com">
+<meta name="description" content="&quot;What I cannot create, I do not understand.&quot; -Feynman (by Jack)">
+	<style type="text/css" id="twentyten-header-css">
+			#site-title a,
+		#site-description {
+			color: #002300 !important;
+		}
+		</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #020000; }
+</style>
+
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/google_service.js">
+</script>
+<script type="text/javascript">
+if ( typeof GS_googleAddAdSenseService == 'function' ) { GS_googleAddAdSenseService("ca-pub-3443918307802676"); }
+if ( typeof GS_googleEnableAllServices == 'function' ) { GS_googleEnableAllServices() };
+</script><script src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/google_ads.js"></script>
+<script type="text/javascript">
+if ( typeof GA_googleAddSlot == 'function' ) { GA_googleAddSlot("ca-pub-3443918307802676", "wpcom_below_post"); }
+</script>
+<script type="text/javascript">
+if ( typeof GA_googleFetchAds == 'function' ) { GA_googleFetchAds(); }
+</script>
+
+<script type="text/javascript">
+var wpcom_ads = { bid: 42952464, pt: 'permalink', wa: 0, as: 0, domain: 'bugbeebox.com', url: 'http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/', gid: '', };
+</script>
+<link rel="stylesheet" type="text/css" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/shThemeDefault.css"><style id="syntaxhighlighteranchor"></style>
+<script type="text/javascript"> 
+	window.google_analytics_uacct = "UA-52447-2"; 
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/ga.js"></script>
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/osd.js"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/services.css"></head>
+
+<body class="single single-post postid-217 single-format-standard custom-background single-author mp6 highlander-enabled highlander-light" style="">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://bugbeebox.com/" title="BugbeeBox( void )" rel="home">BugbeeBox( void )</a>
+					</span>
+				</div>
+				<div id="site-description">"What I cannot create, I do not understand." -Feynman</div>
+
+										<a class="home-link" href="http://bugbeebox.com/" title="BugbeeBox( void )" rel="home">
+							<img src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/cropped-578886_10150995788267199_1905421711_n.jpg" width="940" height="198" alt="">
+						</a>
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu-header"><ul id="menu-main" class="menu"><li id="menu-item-278" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-278"><a href="http://bugbeebox.com/">Home</a></li>
+<li id="menu-item-678" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-678"><a href="http://bugbeebox.com/category/accessibility/">Accessibility</a></li>
+<li id="menu-item-677" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-677"><a href="http://bugbeebox.com/category/programming/">Programming</a></li>
+<li id="menu-item-679" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-679"><a href="http://bugbeebox.com/category/general-tech/">General Tech</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5"><a href="http://bugbeebox.com/about/">About</a></li>
+<li id="menu-item-277" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-277"><a href="http://bugbeebox.com/feed/">RSS</a></li>
+</ul></div>			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"></div>
+					<div class="nav-next"><a href="http://bugbeebox.com/2012/11/18/building-libtiff-4-0-3-with-msvc-2012/" rel="next">Building Static libtiff 4.0.3 with MSVC&nbsp;2012 <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-217" class="post-217 post type-post status-publish format-standard hentry category-image-processing category-programming tag-c tag-jpeg tag-library tag-visual-studio">
+											<h2 class="entry-title"><a href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void ).htm" rel="bookmark">Building Static libjpeg 8d with MSVC&nbsp;2012</a></h2>					
+					<div class="entry-meta">
+													<span class="meta-prep meta-prep-author">Posted on</span> <a href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void ).htm" title="8:38 pm" rel="bookmark"><span class="entry-date">November 18, 2012</span></a>							<span class="by-author"><span class="sep">by</span> <span class="author vcard"><a class="url fn n" href="http://bugbeebox.com/author/jabugbee/" title="View all posts by Jack" rel="author">Jack</a></span> </span>											</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<p>This post will explain how to obtain and build the <a href="http://www.ijg.org/" title="Independent JPEG Group">libjpeg</a> C programming library from source, using MS Visual Studio 2012 on Windows 7. The result will be a static release version that you can use in your C/C++ projects for manipulating JPEG images, and as a prerequisite for building other libraries.</p>
+<h2>Downloads</h2>
+<ul>
+<li><a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-products" title="Visual Studio" target="_blank">MS Visual Studio 2012 Express</a></li>
+<li><a href="http://www.ijg.org/files/jpegsr8d.zip" title="libjpeg 8d" target="_blank">The zipped libjpeg 8d source code</a></li>
+<li><a href="http://www.microsoft.com/en-us/download/details.aspx?id=8279" title="MS Windows 7 SDK" target="_blank">MS Windows 7 SDK</a></li>
+</ul>
+<h2>The Environment</h2>
+<ol>
+<li>Install both Visual Studio and the SDK, if you haven’t already. The SDK contains files needed for building the library, “<i>Win32.mak</i>” specifically, which doesn’t come with the Express version of Visual Studio. </li>
+<p></p>
+<li>Unzip the libjpeg library and you’ll end up with a directory path similar to this:
+<div><div id="highlighter_823022" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">C:\Users\%USERNAME%\Downloads\lib\jpegsr8d\jpeg-8d\</code></div></div></td></tr></tbody></table></div></div>
+<p> Open a console in this directory.</p></li>
+<p></p>
+<li>Run Visual Studio’s “<i>vcvarsall.bat</i>” to set the environment variables.
+<div><div id="highlighter_431476" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell string">"C:\Program Files\Microsoft Visual Studio 11.0\VC\vcvarsall.bat"</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+<li>Set the environment variables to include the “<i>Win32.mak</i>” path.
+<div><div id="highlighter_236005" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell keyword">set</code> <code class="powershell plain">INCLUDE=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include;%INCLUDE%</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+<li>Create the MSVC 2010 solution files using <i>nmake</i>:
+<div><div id="highlighter_573548" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell plain">nmake /f makefile.vc setup-v10</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+</ol>
+<p>Now there should be two newly created Visual Studio solution files: “<i>jpeg.sln</i>” and “<i>apps.sln</i>.” The first is for the jpeg library itself, while the latter is for building a set of applications that utilize the library.</p>
+<h2>Building</h2>
+<ol>
+<li>Open the “<i>jpeg.sln</i>” file in MSVC 2012 and allow the project upgrade. The “<i>Release</i>” configuration is the only option.</li>
+<p></p>
+<li>Set the code generation flag in the project properties for a static (/MT) build.</li>
+<p></p>
+<li>Build the solution.</li>
+<p></p>
+<li>The new static library file is created in a new subfolder called “<i>Release</i>.”
+<div><div id="highlighter_508845" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">C:\Users\%USERNAME%\Downloads\lib\jpegsr8d\jpeg-8d\Release\jpeg.lib</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+</ol>
+<h2>Installing</h2>
+<ol>
+<li>Create a place for the jpeg library with “<i>jpeg</i>” and “<i>lib</i>” subfolders.
+<div><div id="highlighter_111034" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell plain">mkdir </code><code class="powershell string">"C:\workspace\lib\jpeg\jpeg-8d\jpeg"</code></div><div class="line number2 index1 alt1"><code class="powershell plain">mkdir </code><code class="powershell string">"C:\workspace\lib\jpeg\jpeg-8d\lib"</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+<li>Copy the header files.
+<div><div id="highlighter_958045" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell plain">xcopy </code><code class="powershell string">"C:\Users\%USERNAME%\Downloads\lib\jpegsr8d\jpeg-8d\*.h"</code> <code class="powershell plain">"C:\workspace\lib\jpeg\jpeg-8d\jpeg\"</code></div></div></td></tr></tbody></table></div></div>
+<p>.</p></li>
+<p></p>
+<li>Copy the library file.
+<div><div id="highlighter_585063" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell plain">xcopy </code><code class="powershell string">"C:\Users\%USERNAME%\Downloads\lib\jpegsr8d\jpeg-8d\Release\jpeg.lib"</code> <code class="powershell plain">"C:\workspace\lib\jpeg\jpeg-8d\lib\"</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+<li>Add the include and lib paths to the default project property page in MSVC 2012: <i><br>
+View → Other Windows → Property Manager → Release/Debug → Microsoft.Cpp.Win32.user</i>.<br>
+Be sure to save the property sheet so that the changes take effect.</li>
+<p></p>
+</ol>
+<h2>Testing</h2>
+<ol>
+<li>Create a new project, “<i>LibTest</i>” in MSVC 2012.</li>
+<p></p>
+<li>Explicitly add the jpeg library to the project: <i>Project → Properties →Linker → Input → Additional Dependencies = “jpeg.lib;”</i></li>
+<p></p>
+<li>Create a source file in the project with this code:
+<div><div id="highlighter_222207" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp preprocessor">#include &lt;stdio.h&gt;</code></div><div class="line number2 index1 alt1"><code class="cpp preprocessor">#include &lt;jpeglib.h&gt;</code></div><div class="line number3 index2 alt2"><code class="cpp keyword bold">void</code> <code class="cpp plain">main()</code></div><div class="line number4 index3 alt1"><code class="cpp plain">{</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">j_compress_ptr cinfo;</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">jpeg_abort_compress(cinfo);</code></div><div class="line number7 index6 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<p></p>
+</ol>
+<p>Build the project. It should compile and link successfully.</p>
+<h2>Potential Issues</h2>
+<p>These are some of the problems that you might run into while trying to build libjpeg.</p>
+<h3>makefile.vc(11) : fatal error U1052: file ‘win32.mak’ not found</h3>
+<p>The <i>Win32.mak</i> file can’t be located by Visual Studio. It isn’t included with the Express edition, but can be obtained by installing the MS Windows 7 SDK noted above. The file’s location depends on whether you are on a 32-bit or 64-bit system.</p>
+<p>32-bit: </p>
+<div><div id="highlighter_559636" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">C:\Program Files\Microsoft SDKs\Windows\v7.0\Include</code></div><div class="line number2 index1 alt1"><code class="plain plain">C:\Program Files\Microsoft SDKs\Windows\v7.0A\Include</code></div></div></td></tr></tbody></table></div></div>
+<p>64-bit:</p>
+<div><div id="highlighter_8541" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include</code></div><div class="line number2 index1 alt1"><code class="plain plain">C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0\Include</code></div></div></td></tr></tbody></table></div></div>
+<p>Set the “<i>INCLUDE</i>” environment variable to the path with “<i>Win32.mak</i>” in the console:</p>
+<div><div id="highlighter_321508" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell keyword">set</code> <code class="powershell plain">INCLUDE=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Include;%INCLUDE%</code></div></div></td></tr></tbody></table></div></div>
+<p>Verify that the include path is set properly</p>
+<div><div id="highlighter_570970" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell keyword">echo</code> <code class="powershell plain">%INCLUDE%</code></div><div class="line number2 index1 alt1"><code class="powershell plain">C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\INCLUDE;C:\Program Files (x86)\Windows Kits\8.0\include\shared;C:\Program Files (x86)\Windows Kits\8.0\include\um;C:\Program Files (x86)\Windows Kits\8.0\include\winrt;</code></div></div></td></tr></tbody></table></div></div>
+<h3>LNK2001: unresolved external symbol _jpeg_abort_compress</h3>
+<p>The library file hasn’t been explicitly added to the project. Verify that the “jpeg.lib” file is included in the project’s “Additional Dependencies.”</p>
+<h3>C2061: syntax error : identifier ‘FILE’</h3>
+<p>The project can’t find any reference for the structure “<i>FILE</i>.” It is a member of “<i>stdio.h</i>,” which needs to be included before “<i>jpeg.h</i>.”</p>
+
+<div class="wpa" style="position: relative; width: 400px; text-align: center; padding: 0px; margin: 10px auto; overflow: hidden; clear: both;">
+<a style="position: absolute; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+<script type="text/javascript">
+		var wpcom_adclk_hovering = false;
+		var wpcom_adclk_recorded = false;
+		var wpcom_adclk_theme = "Twenty Ten";
+		var wpcom_adclk_slot = "wpcom_below_post";
+		var wpcom_adclk_network = ( typeof wpcom_adclk_network === "undefined" ) ? "" : wpcom_adclk_network ;
+
+		jQuery(document).ready( function() {
+			function wpcom_adclk_hover_yes() { wpcom_adclk_hovering = true; }
+			function wpcom_adclk_hover_no() { wpcom_adclk_hovering = false; }
+			jQuery(".wpa").click(wpcom_adclk_click);
+			jQuery(".wpa iframe").hover( wpcom_adclk_hover_yes, wpcom_adclk_hover_no );
+			jQuery(".wpa object").hover( wpcom_adclk_hover_yes, wpcom_adclk_hover_no );
+
+			jQuery(window).blur( function() {
+				if ( wpcom_adclk_hovering ) { wpcom_adclk_click(); }
+			});
+		});
+
+		function wpcom_adclk_impression() {
+			var stat_gif = document.location.protocol + "//stats.wordpress.com/g.gif?v=wpcom-no-pv";
+			stat_gif += "&x_ads_imp_theme=" + wpcom_adclk_theme;
+			stat_gif += "&x_ads_imp_placement="+wpcom_adclk_slot;
+			stat_gif += "&x_ads_imp_network=" + wpcom_adclk_network;
+			stat_gif += "&x_ads_imp_theme_network="+wpcom_adclk_theme+"_"+wpcom_adclk_network;
+			new Image().src = stat_gif + "&baba=" + Math.random();
+			return true;
+		}
+
+		function wpcom_adclk_click() {
+			if (wpcom_adclk_recorded) { return true; } // no double counting
+			var stat_gif = document.location.protocol + "//stats.wordpress.com/g.gif?v=wpcom-no-pv";
+			stat_gif += "&x_ads_click_theme=" + wpcom_adclk_theme;
+			stat_gif += "&x_ads_click_placement="+wpcom_adclk_slot;
+			stat_gif += "&x_ads_click_network=" + wpcom_adclk_network;
+			stat_gif += "&x_ads_click_theme_network="+wpcom_adclk_theme+"_"+wpcom_adclk_network;
+
+			new Image().src = stat_gif + "&baba=" + Math.random();
+			wpcom_adclk_recorded = true;
+			var now=new Date(); var end=now.getTime()+250;
+			while(true){now=new Date();if(now.getTime()>end){break;}}
+			return true;
+		}
+	
+if ( typeof GA_googleAddAttr == 'function' ) {
+GA_googleAddAttr("AdOpt", "1");
+GA_googleAddAttr("Origin", "extsearch");
+GA_googleAddAttr("LangId", "1");
+GA_googleAddAttr("Domain", "bugbeebox.com");
+GA_googleAddAttr("BlogId", "42952464");
+GA_googleAddAttr("Autotag", "technology");
+GA_googleAddAttr("Tag", "image-processing");
+GA_googleAddAttr("Tag", "programming");
+GA_googleAddAttr("Tag", "c");
+GA_googleAddAttr("Tag", "jpeg");
+GA_googleAddAttr("Tag", "library");
+GA_googleAddAttr("Tag", "visual-studio");
+GA_googleAddAttr("theme_bg", "ffffff");
+GA_googleAddAttr("theme_text", "333333");
+GA_googleAddAttr("theme_link", "0066cc");
+GA_googleAddAttr("theme_border", "cccccc");
+GA_googleAddAttr("theme_url", "ff4b33");
+GA_googleAddAdSensePageAttr("google_page_url", "http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/");
+GA_googleFillSlot("wpcom_below_post");
+}
+</script><script src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/ads"></script><div id="google_ads_div_wpcom_below_post_ad_wrapper">
+<div id="google_ads_div_wpcom_below_post_ad_container" style="display:inline-block;"><script>
+var wpcom_adclk_network = "sharethrough";
+if (typeof wpcom_adclk_impression == "function") { wpcom_adclk_impression(); }
+</script>
+<div class="sharethrough-placement" data-sharethrough-placement-key="12b0c122" data-sharethrough-params="{ &quot;pext&quot; : &quot;wp-42952464&quot; }" style="width:400px;height:267px;" data-sharethrough-type="placement" data-sharethrough-key="12b0c122"><iframe src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/12b0c122.htm" frameborder="0" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" scrolling="no" allowtransparency="true" style="width: 400px; height: 267px;"></iframe></div>
+<script>
+(function() {
+  var t   = document.createElement('script');
+  t.type  = 'text/javascript';
+  t.async = true;
+  t.src = '//apis.sharethrough.com/v0/tags.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(t, s);
+})();
+</script>
+
+</div>
+</div>
+
+</div>
+<style type="text/css">
+div.wpa>div { margin-top: 1em; }
+</style>
+<script type="text/javascript">
+jQuery( window ).load( function() {
+    if ( jQuery(".wpa script[src*='shareth.ru']").length > 0 || jQuery(".wpa iframe[src*='boomvideo.tv']").length > 0 || jQuery(".wpa iframe[src*='viewablemedia.net']").length > 0 || jQuery(".wpa .sharethrough-placement").length > 0 ) {
+        jQuery( '.wpa' ).css( 'width', '400px' );
+    }
+setTimeout(function(){if(typeof GS_googleAddAdSenseService !== 'function'){new Image().src=document.location.protocol+"//stats.wordpress.com/g.gif?v=wpcom-no-pv&x_noads=adblock&baba="+Math.random()}},100);
+} );
+</script>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" class="share-twitter sd-button share-icon" href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/?share=twitter&nb=1" title="Click to share on Twitter" id="sharing-twitter-217"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" class="share-facebook sd-button share-icon" href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/?share=facebook&nb=1" title="Share on Facebook" id="sharing-facebook-217"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-42952464-217-51f38f19e197d" data-src="http://widgets.wp.com/likes/#blog_id=42952464&amp;post_id=217&amp;origin=http://jabugbee.wordpress.com&amp;obj_id=42952464-217-51f38f19e197d" data-name="like-post-frame-42952464-217-51f38f19e197d"><h3 class="sd-title">Like this:</h3><div class="post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-42952464-217-51f38f19e197d" height="55px" width="100%" frameborder="0" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/saved_resource(10).htm" style="display: inline;"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div></div>											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+												This entry was posted in <a href="http://bugbeebox.com/category/image-processing/" title="View all posts in Image Processing" rel="category tag">Image Processing</a>, <a href="http://bugbeebox.com/category/programming/" title="View all posts in Programming" rel="category tag">Programming</a> and tagged <a href="http://bugbeebox.com/tag/c/" rel="tag">c++</a>, <a href="http://bugbeebox.com/tag/jpeg/" rel="tag">jpeg</a>, <a href="http://bugbeebox.com/tag/library/" rel="tag">library</a>, <a href="http://bugbeebox.com/tag/visual-studio/" rel="tag">visual studio</a>. Bookmark the <a href="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void ).htm" title="Permalink to Building Static libjpeg 8d with MSVC 2012" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"></div>
+					<div class="nav-next"><a href="http://bugbeebox.com/2012/11/18/building-libtiff-4-0-3-with-msvc-2012/" rel="next">Building Static libtiff 4.0.3 with MSVC&nbsp;2012 <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+			<h3 id="comments-title">3 Responses to <em>Building Static libjpeg 8d with MSVC&nbsp;2012</em></h3>
+
+
+			<ol class="commentlist">
+					<li class="comment byuser comment-author-caustik even thread-even depth-1 highlander-comment" id="li-comment-5">
+		<div id="comment-5">
+			<div class="comment-author vcard">
+				<img alt="" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/8629503e140772710ac04f710751adb1" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40" id="grav-8629503e140772710ac04f710751adb1-0">				<cite class="fn"><a href="http://blog.caustik.com/" rel="external nofollow" class="url">caustik</a></cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/comment-page-1/#comment-5">
+				November 27, 2012 at 3:48 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Thanks! Ran into this problem today, and your blog was helpful.</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/?replytocom=5#respond" onclick="return addComment.moveForm(&quot;comment-5&quot;, &quot;5&quot;, &quot;respond&quot;, &quot;217&quot;)">Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-jabugbee bypostauthor odd alt depth-2 highlander-comment" id="li-comment-6">
+		<div id="comment-6">
+			<div class="comment-author vcard">
+				<img alt="" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/9d290151b938b644cf8fb1fd675c9dda" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40" id="grav-9d290151b938b644cf8fb1fd675c9dda-0">				<cite class="fn"><a href="http://jabugbee.wordpress.com/" rel="external nofollow" class="url">Jack</a></cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/comment-page-1/#comment-6">
+				November 27, 2012 at 8:53 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Great! Glad to know it’s useful to someone else.</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/?replytocom=6#respond" onclick="return addComment.moveForm(&quot;comment-6&quot;, &quot;6&quot;, &quot;respond&quot;, &quot;217&quot;)">Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="post pingback">
+		<p>Pingback: <a href="http://johnbugbee.com/2012/12/30/building-static-podofo-0-9-1-with-msvc-2012/" rel="external nofollow" class="url">Building Static PoDoFo 0.9.1 with MSVC 2012 | Hyperfocus</a></p>
+	</li><!-- #comment-## -->
+			</ol>
+
+
+	
+
+								<div id="respond" class="comment-respond js">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://bugbeebox.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																										
+
+
+												<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="91983124ea"><input type="hidden" name="_wp_http_referer" value="/2012/11/18/building-libjpeg-8d-with-msvc-2012/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 44px; resize: none; overflow-y: hidden; position: absolute; top: 0px; left: -9999px; width: 618px; line-height: 24px; text-decoration: none; letter-spacing: 0px;" tabindex="-1" aria-hidden="true"></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 44px; resize: none; overflow-y: hidden;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="text" value=""></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/wplogo.png" alt="WordPress.com Logo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+	
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of follow-up comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+												<p class="form-submit" style="display: none;">
+							<input name="submit" type="submit" id="comment-submit" value="Post Comment">
+							<input type="hidden" name="comment_post_ID" value="217" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						
+<input type="hidden" name="genseq" value="1374916378">
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="0b97a49484"></p><script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/form.js"></script>
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="1374916380725"></p>					</form>
+							</div><!-- #respond -->
+			<div style="clear: both"></div>			
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+						<ul class="xoxo">
+
+<li id="search-3" class="widget-container widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="searchform" action="http://bugbeebox.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li><li id="pages-2" class="widget-container widget_pages"><h3 class="widget-title">Static Pages</h3>		<ul>
+			<li class="page_item page-item-2"><a href="http://bugbeebox.com/about/">About</a></li>
+<li class="page_item page-item-395"><a href="http://bugbeebox.com/digital-funny-business/">Digital Funny&nbsp;Business</a></li>
+<li class="page_item page-item-641"><a href="http://bugbeebox.com/quotes/">Quotes</a></li>
+		</ul>
+		</li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://bugbeebox.com/2013/06/01/openssh-with-rsa-keys/" title="OpenSSH with RSA Keys">OpenSSH with RSA&nbsp;Keys</a>
+						</li>
+					<li>
+				<a href="http://bugbeebox.com/2013/05/28/pointing-jaws-clients-at-the-license-server/" title="Pointing JAWS Clients at the License Server">Pointing JAWS Clients at the License&nbsp;Server</a>
+						</li>
+					<li>
+				<a href="http://bugbeebox.com/2013/05/17/spevi-a-navigation-system-for-the-blind/" title="SPEVi: A Navigation System for the Blind">SPEVi: A Navigation System for the&nbsp;Blind</a>
+						</li>
+					<li>
+				<a href="http://bugbeebox.com/2013/05/06/voiceye-accessible-physical-documents-and-labels/" title="VOICEYE: Accessible Physical Documents and Labels">VOICEYE: Accessible Physical Documents and&nbsp;Labels</a>
+						</li>
+					<li>
+				<a href="http://bugbeebox.com/2013/05/03/microsoft-office-document-imaging-modi-and-jpeg-compressed-tif-images/" title="Microsoft Office Document Imaging (MODI) and JPEG Compressed TIF Images">Microsoft Office Document Imaging (MODI) and JPEG Compressed TIF&nbsp;Images</a>
+						</li>
+				</ul>
+		</li><li id="rss-7" class="widget-container widget_rss"><h3 class="widget-title"><a class="rsswidget" href="http://feeds.feedburner.com/tedtalks_video" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://www.ted.com/talks/list" title="TED is a nonprofit devoted to Ideas Worth Spreading. On this feed, you&#39;ll find TEDTalks video to inspire, intrigue and stir the imagination from some of the world&#39;s leading thinkers and doers, speaking from the stage at TED conferences, TEDx events and partner events around the world. This podcast is also available in high-def video and audio-only formats.">TED Talks</a></h3><ul><li><a class="rsswidget" href="http://feedproxy.google.com/~r/TEDTalks_video/~3/n4fi9GB27rQ/tania_luna_how_a_penny_made_me_feel_like_a_millionaire.html" title="As a young child, Tania Luna left her home in post-Chernobyl Ukraine to take asylum in the US. And one day, on the floor of the New York homeless shelter where she and her family lived, she found a penny. She has never again felt so rich. A meditation on the bittersweet joys of childhood -- and how to hold them in mind.">TED: Tania Luna: How a penny made me feel like a millionaire - Tania Luna (2012)</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/TEDTalks_video/~3/YTWUbei7F6w/paul_kemp_robertson_bitcoin_sweat_tide_meet_the_future_of_branded_currency.html" title="Currency -- the bills and coins you carry in your wallet and in your bank account -- is founded on marketing, on the belief that banks and governments are trustworthy. Now, Paul Kemp-Robertson walks us through a new generation of currency, supported by that same marketing … but on behalf of a private brand. From Nike Sweat Points to bottles of Tide (which ar […]">TED: Paul Kemp-Robertson: Bitcoin. Sweat. Tide. Meet the future of branded currency. - Paul Kemp-Robertson (2013)</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/TEDTalks_video/~3/wQIWYYjSrNo/roberto_d_angelo_francesca_fedeli_in_our_baby_s_illness_a_life_lesson.html" title="Roberto D&#39;Angelo and Francesca Fedeli thought their baby boy Mario was healthy -- until at 10 days old, they discovered he&#39;d had a perinatal stroke. With Mario unable to control the left side of his body, they grappled with tough questions: Would he be &quot;normal?” Could he live a full life? The poignant story of parents facing their fears -- and […]">TED: Roberto D'Angelo + Francesca Fedeli: In our baby's illness, a life lesson - Roberto D'Angelo + Francesca Fedeli (2013)</a></li></ul></li><li id="rss-6" class="widget-container widget_rss"><h3 class="widget-title"><a class="rsswidget" href="http://feeds.sciencedaily.com/sciencedaily/computers_math/computer_science" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://www.sciencedaily.com/news/computers_math/computer_science/" title="Computer Science. Read all the latest developments in the computer sciences including articles on new software, hardware and systems.">ScienceDaily: Computer Science</a></h3><ul><li><a class="rsswidget" href="http://feeds.sciencedaily.com/~r/sciencedaily/computers_math/computer_science/~3/cq318AXS-RU/130725152141.htm" title="Researchers have developed a computer-aided method that uses electronic medical records to offer the promise of rapid advances toward personalized health care, disease management and wellness.">Researchers develop system that uses a big data approach to personalized healthcare</a></li><li><a class="rsswidget" href="http://feeds.sciencedaily.com/~r/sciencedaily/computers_math/computer_science/~3/dcENT6GpvOo/130725125418.htm" title="Researchers have devised a computer algorithm that takes intermittent samples -- for example, the number of prey and predating species in a forest once a year, or the concentration of different species in a chemical bath once an hour -- and infer the likely reactions that led to that result. They&#39;re working backward from traditional stochastic modeling, […]">Computer can infer rules of the forest</a></li><li><a class="rsswidget" href="http://feeds.sciencedaily.com/~r/sciencedaily/computers_math/computer_science/~3/g2Ox8b0xao4/130724124911.htm" title="Computer models of individual neurons are being assembled into neural circuits that produce actual electrical signals akin to brain waves. The results are helping solve the mystery of how and why these signals arise in the brain.">Neural simulations hint at the origin of brain waves</a></li></ul></li><li id="rss-3" class="widget-container widget_rss"><h3 class="widget-title"><a class="rsswidget" href="http://feeds.feedburner.com/makezineonline" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://makezine.com/" title="DIY projects, how-tos, and inspiration from geeks, makers, and hackers">MAKE Magazine</a></h3><ul><li><a class="rsswidget" href="http://feedproxy.google.com/~r/makezineonline/~3/MXO_286NfaY/" title="The Shed team has landed in Detroit, and we&#39;ve brought dozens of great products with us. We&#39;re right in front of the Henry Ford museum near the Power Racing Series track, in a massive tent that&#39;s very hard to miss. We have everything from 3D Printers and Microcontrollers to Craft Kits and Wearables.Read more on MAKE       ">Maker Shed is Ready to Rock at Maker Faire Detroit</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/makezineonline/~3/HvgVlUnpMw8/" title="Introducing the MAKE Crowdfund Fund. The MAKE Crowdfund Fund. We are putting up a chunk of money each month. We are going to nominate a set of active KS campaigns with a maker sensibility to them. We are going to ask you the readers to decide which one we should back. Whichever one you select, we&#39;ll back at a level to get the primary product. If the pro […]">Shadowrun, Atlantic City, and the ups and Downs of Kickstarter</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/makezineonline/~3/5FodCMWz_KE/" title="Do you smell something burning? Well, that could just be the project you build once you&#39;ve read MAKE Volume 35: The Danger Issue! It&#39;s all about rockets, flames, and fun, you&#39;ll be lighting the fuse of your own imagination when you dig into this issue.Read more on MAKE       ">DANGER! MAKE Volume 35 now on Sale: Are you Safe?</a></li></ul></li><li id="rss-5" class="widget-container widget_rss"><h3 class="widget-title"><a class="rsswidget" href="http://rss.slashdot.org/Slashdot/slashdot" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://slashdot.org/" title="News for nerds, stuff that matters">Slashdot</a></h3><ul><li><a class="rsswidget" href="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/p5lC95K3vR0/story01.htm" title="An anonymous reader writes &quot;IEEE Spectrum has a story about a robot that uses infra red and ultrasound to image veins, picks the one with best bloodflow, and then sticks a needle in. (video included). Veebot started as an undergrad project and the creators are aiming for better performance than a human phlebotimist before going for clinical trials. Robo […]">Would You Let a Robot Stick You With a Needle?</a></li><li><a class="rsswidget" href="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/gUPRuDvzMPA/story01.htm" title="arisvega writes &quot;The State of Japan is apparently seeking &#39;Deter and Respond&#39; military capabilities, perhaps as an artifact from being &#39;embroiled in a bitter row over islands with China&#39; and being &#39;deeply concerned by North Korea&#39;s nuclear ambitions,&#39; as reported by the BBC. Since the end of WW II, under Article 9 of i […]">Japan's Military 'Needs Marines and Drones'</a></li><li><a class="rsswidget" href="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/5iTPVXjbV5g/story01.htm" title="alphadogg writes &quot;Oracle is continuing to crack down on companies it claims are providing support services for its products in an illegal fashion. Last week, Oracle sued IT services providers Terix and Maintech, alleging they have &#39;engaged in a deliberate scheme to misappropriate and distribute copyrighted, proprietary Oracle software code&#39; in […]">Oracle Sues Companies It Says Provide Solaris OS Support In Illegal Manner</a></li></ul></li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://bugbeebox.com/" title="BugbeeBox( void )" rel="home">
+					BugbeeBox( void )				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+				<a href="http://theme.wordpress.com/themes/twentyten/" title="Learn more about this theme">The Twenty Ten Theme</a>.				<a href="http://wordpress.com/?ref=footer" rel="generator">Blog at WordPress.com</a>.
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+
+<script type="text/javascript">
+var _qevents = _qevents || [], wpcomQuantcastData = {"qacct":"p-18-mFEk4J448M","labels":",language.en,type.wpcom,posttag.c,posttag.jpeg,posttag.library,posttag.visual-studio,as"};
+function wpcomQuantcastPixel( labels, options ) {
+	var i, defaults = wpcomQuantcastData, data = { event: 'ajax' };
+
+	labels  = labels  || '';
+	options = options || {};
+
+	if ( typeof labels != 'string' )
+		options = labels;
+
+	for ( i in defaults ) {
+		data[i] = defaults[i];
+	}
+
+	for ( i in options ) {
+		data[i] = options[i];
+	}
+
+	if ( data.labels ) {
+		data.labels += ',' + labels;
+	} else {
+		data.labels = labels;
+	}
+
+	_qevents.push( data );
+};
+(function() {var elem = document.createElement('script');elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";elem.async = true;elem.type = "text/javascript";var scpt = document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem, scpt);  })();
+_qevents.push( wpcomQuantcastData );
+</script>
+<noscript>&lt;div style="display: none;"&gt;&lt;img src="//pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif?labels=%2Clanguage.en%2Ctype.wpcom%2Cposttag.c%2Cposttag.jpeg%2Cposttag.library%2Cposttag.visual-studio%2Cas" height="1" width="1" alt="" /&gt;&lt;/div&gt;</noscript>
+
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/wpgroho.js"></script>
+<script>jQuery(document).ready(function($){ Gravatar.profile_cb = function( h, d ) { WPGroHo.syncProfileData( h, d );	}; Gravatar.my_hash = WPGroHo.my_hash; Gravatar.init( 'body', '#wp-admin-bar-my-account' ); });</script>	<div style="display:none">
+	<div class="grofile-hash-map-8629503e140772710ac04f710751adb1">
+	</div>
+	<div class="grofile-hash-map-9d290151b938b644cf8fb1fd675c9dda">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"http:\/\/jabugbee.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"http:\/\/jabugbee.wordpress.com\/wp-login.php?action=logout&_wpnonce=5a565252dc","homeURL":"http:\/\/bugbeebox.com\/","postID":"217","gravDefault":"mystery","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/saved_resource(2)"></script>
+
+	<div id="bit" class="loggedout-follow-normal" style="bottom: -239px;">
+		<a class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow “BugbeeBox( void )”</label></h3>
+
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+			
+			<p><input type="email" name="email" style="width: 95%; padding: 1px 2px" value="Enter your email address" onfocus="this.value=(this.value==&quot;Enter your email address&quot;) ? &quot;&quot; : this.value;" onblur="this.value=(this.value==&quot;&quot;) ? &quot;Enter email address&quot; : this.value;" id="loggedout-follow-field"></p>
+
+			<input type="hidden" name="action" value="subscribe">
+			<input type="hidden" name="blog_id" value="42952464">
+			<input type="hidden" name="source" value="http://bugbeebox.com/2012/11/18/building-libjpeg-8d-with-msvc-2012/">
+			<input type="hidden" name="sub-type" value="loggedout-follow">
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="776ddb27fc"><input type="hidden" name="_wp_http_referer" value="/2012/11/18/building-libjpeg-8d-with-msvc-2012/">
+			<p id="bsub-subscribe-button"><input type="submit" value="Sign me up"></p>
+			</form>
+					<div id="bsub-credit"><a href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+
+	<script type="text/javascript">
+		WPCOM_sharing_counts = {"http:\/\/bugbeebox.com\/2012\/11\/18\/building-libjpeg-8d-with-msvc-2012\/":217}	</script>
+		<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<iframe src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/master.htm" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<script type="text/javascript">
+		//<![CDATA[
+			var jetpackLikesWidgetQueue = [];
+			var jetpackLikesMasterReady = false;
+
+			function JetpackLikespostMessage( message, target ) {
+				if ( "string" === typeof message ){
+					try{
+						message = JSON.parse( message );
+					}
+					catch(e) {
+						return;
+					}
+				}
+
+				pm( {
+					target: target,
+					type: 'likesMessage',
+					data: message,
+					origin: '*'
+				} );
+			}
+
+			function JetpackLikesMessageListener( event ) {
+				if ( "undefined" == typeof event.event )
+					return;
+
+				if ( 'masterReady' == event.event ) {
+					jQuery( document ).ready( function() {
+						jetpackLikesMasterReady = true;
+
+						var stylesData = {
+								event: 'injectStyles'
+						};
+
+						if ( jQuery( 'iframe.admin-bar-likes-widget' ).length > 0 ) {
+							JetpackLikespostMessage( { event: 'adminBarEnabled' }, window.frames[ 'likes-master' ] );
+
+							stylesData.adminBarStyles = {
+								background: jQuery( '#wpadminbar .quicklinks li#wp-admin-bar-wpl-like > a' ).css( 'background' )
+							};
+						}
+
+						if ( !window.addEventListener )
+							jQuery( '#wp-admin-bar-admin-bar-likes-widget' ).hide();
+
+						stylesData.textStyles = {
+							color: jQuery( '.sd-text-color').css( 'color' ),
+							fontFamily: jQuery( '.sd-text-color' ).css( 'font-family' ),
+							fontSize: jQuery( '.sd-text-color' ).css( 'font-size' ),
+							direction: jQuery( '.sd-text-color' ).css( 'direction' ),
+							fontWeight: jQuery( '.sd-text-color' ).css( 'font-weight' ),
+							fontStyle: jQuery( '.sd-text-color' ).css( 'font-style' ),
+							textDecoration: jQuery( '.sd-text-color' ).css('text-decoration')
+						};
+
+						stylesData.linkStyles = {
+							color: jQuery( '.sd-link-color' ).css('color'),
+							fontFamily: jQuery( '.sd-link-color' ).css('font-family'),
+							fontSize: jQuery( '.sd-link-color' ).css('font-size'),
+							textDecoration: jQuery( '.sd-link-color' ).css('text-decoration'),
+							fontWeight: jQuery( '.sd-link-color' ).css( 'font-weight' ),
+							fontStyle: jQuery( '.sd-link-color' ).css( 'font-style' )
+						};
+
+						JetpackLikespostMessage( stylesData, window.frames[ 'likes-master' ] );
+
+						var requests = [];
+						jQuery( '.jetpack-likes-widget-wrapper' ).each( function( i ) {
+							var regex = /like-(post|comment)-wrapper-(\d+)-(\d+)-(\w+)/;
+							var match = regex.exec( this.id );
+							if ( ! match || match.length != 5 )
+								return;
+
+							var info = {
+								blog_id: match[2],
+								width:   this.width
+							};
+
+							if ( 'post' == match[1] ) {
+								info.post_id = match[3];
+							} else if ( 'comment' == match[1] ) {
+								info.comment_id = match[3];
+							}
+
+							info.obj_id = match[4];
+
+							requests.push( info );
+						});
+
+						JetpackLikespostMessage( { event: 'initialBatch', requests: requests }, window.frames['likes-master'] );
+
+						jQuery( document ).on( 'inview', 'div.jetpack-likes-widget-unloaded', function() {
+							jetpackLikesWidgetQueue.push( this.id );
+						});
+					});
+				}
+
+				if ( 'showLikeWidget' == event.event ) {
+					setTimeout( JetpackLikesWidgetQueueHandler, 10 );
+					jQuery( '#' + event.id + ' .post-likes-widget-placeholder'  ).fadeOut( 'fast', function() {
+						jQuery( '#' + event.id + ' .post-likes-widget' ).fadeIn( 'fast', function() {
+							JetpackLikespostMessage( { event: 'likeWidgetDisplayed', blog_id: event.blog_id, post_id: event.post_id, obj_id: event.obj_id }, window.frames['likes-master'] );
+						});
+					});
+				}
+
+				if ( 'showOtherGravatars' == event.event ) {
+					var $container = jQuery( '#likes-other-gravatars' );
+					var $list = $container.find( 'ul' );
+
+					$container.hide();
+					$list.html( '' );
+
+					$container.find( '.likes-text span' ).text( event.total );
+
+					jQuery.each( event.likers, function( i, liker ) {
+						$list.append( '<li class="' + liker.css_class + '"><a href="' + liker.profile_URL + '" class="wpl-liker" rel="nofollow" target="_parent"><img src="' + liker.avatar_URL + '" alt="' + liker.name + '" width="30" height="30" style="padding-right: 3px;" /></a></li>');
+					} );
+
+					var offset = jQuery( "[name='" + event.parent + "']" ).offset();
+
+					$container.css( 'left', offset.left + event.position.left - 10 + 'px' );
+					$container.css( 'top', offset.top + event.position.top - 33 + 'px' );
+
+					var rowLength = Math.floor( event.width / 37 );
+					var height = ( Math.ceil( event.likers.length / rowLength ) * 37 ) + 13;
+					if ( height > 204 ) {
+						height = 204;
+					}
+
+					$container.css( 'height', height + 'px' );
+					$container.css( 'width', rowLength * 37 - 7 + 'px' );
+
+					$list.css( 'width', rowLength * 37 + 'px' );
+
+					$container.fadeIn( 'slow' );
+
+					var scrollbarWidth = $list[0].offsetWidth - $list[0].clientWidth;
+					if ( scrollbarWidth > 0 ) {
+						$container.width( $container.width() + scrollbarWidth );
+						$list.width( $list.width() + scrollbarWidth );
+					}
+				}
+			}
+
+			pm.bind( 'likesMessage', function(e) { JetpackLikesMessageListener(e); } );
+
+			jQuery( document ).click( function( e ) {
+				var $container = jQuery( '#likes-other-gravatars' );
+
+				if ( $container.has( e.target ).length === 0 ) {
+					$container.fadeOut( 'slow' );
+				}
+			});
+
+			function JetpackLikesWidgetQueueHandler() {
+				var wrapperID;
+				if ( ! jetpackLikesMasterReady ) {
+					setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+					return;
+				}
+
+				if ( jetpackLikesWidgetQueue.length > 0 ) {
+					// We may have a widget that needs creating now
+					var found = false;
+					while( jetpackLikesWidgetQueue.length > 0 ) {
+						// Grab the first member of the queue that isn't already loading.
+						wrapperID = jetpackLikesWidgetQueue.splice( 0, 1 )[0];
+						if ( jQuery( '#' + wrapperID ).hasClass( 'jetpack-likes-widget-unloaded' ) ) {
+							found = true;
+							break;
+						}
+					}
+					if ( ! found ) {
+						setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+						return;
+					}
+				} else if ( jQuery( 'div.jetpack-likes-widget-unloaded' ).length > 0 ) {
+					// Get the next unloaded widget
+					wrapperID = jQuery( 'div.jetpack-likes-widget-unloaded' ).first()[0].id;
+					if ( ! wrapperID ) {
+						// Everything is currently loaded
+						setTimeout( JetpackLikesWidgetQueueHandler, 500 );
+						return;
+					}
+				}
+
+				var $wrapper = jQuery( '#' + wrapperID );
+				$wrapper.find( 'iframe' ).remove();
+
+				if ( $wrapper.hasClass( 'slim-likes-widget' ) ) {
+					$wrapper.find( '.post-likes-widget-placeholder' ).after( "<iframe class='post-likes-widget jetpack-likes-widget' name='" + $wrapper.data( 'name' ) + "' height='22px' width='68px' frameBorder='0' scrolling='no' src='" + $wrapper.data( 'src' ) + "'></iframe>" );
+				} else {
+					$wrapper.find( '.post-likes-widget-placeholder' ).after( "<iframe class='post-likes-widget jetpack-likes-widget' name='" + $wrapper.data( 'name' ) + "' height='55px' width='100%' frameBorder='0' src='" + $wrapper.data( 'src' ) + "'></iframe>" );
+				}
+
+				$wrapper.removeClass( 'jetpack-likes-widget-unloaded' ).addClass( 'jetpack-likes-widget-loading' );
+
+				$wrapper.find( 'iframe' ).load( function( e ) {
+					var $iframe = jQuery( e.target );
+					$wrapper.removeClass( 'jetpack-likes-widget-loading' ).addClass( 'jetpack-likes-widget-loaded' );
+
+					JetpackLikespostMessage( { event: 'loadLikeWidget', name: $iframe.attr( 'name' ), width: $iframe.width() }, window.frames[ 'likes-master' ] );
+
+					if ( $wrapper.hasClass( 'slim-likes-widget' ) ) {
+						$wrapper.find( 'iframe' ).Jetpack( 'resizeable' );
+					}
+				});
+				setTimeout( JetpackLikesWidgetQueueHandler, 250 );
+			}
+			JetpackLikesWidgetQueueHandler();
+		//]]>
+		</script>
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/saved_resource(3)"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?m=1370811927g&amp;ver=3.0.83c";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?m=1363304414g&amp;ver=3.0.83c";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var recaptcha_options = {"lang":"en"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/saved_resource(4)"></script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/w.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({'blog':'42952464','v':'wpcom','tz':'-7','user_id':'0','post':'217','subd':'jabugbee'});
+ex_go({'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWtpP0NsWnVkPS9sL0ViLndld3B2YU5OR05vUHd0Y1dnMG5BXV1HN1BPKyZKNm53UnxDPXpEc1c4cmwzZHNBYW1TV3IsUzBERytEQ0NMcy1mc3ZBOTM0LyxwQ1cxZVgxY0pGV3QsZVYxW1QtT1tnM1FkdU1mVEctW0NLblI5dy82NkVDODJ8JVlqfE00NiVbaltLd0c4VkRCZTdDPS92PXRXfEZHcmZOaEZNK2ZaJnkxUi9FVkdXcWcsSUFldER1dHJqRDVvNiVjVVo9bSxVcHFOM1JfMmw3TVNQLms1YmlkJWxubC42Wz9jdzBFem9sfnNjJlZ6L2JGOWFIbD9kbA=='});
+addLoadEvent(function(){linktracker_init('42952464',217);});
+	</script><img id="wpstats" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/g.gif" alt=""><img id="wpstats2" src="./Building Static libjpeg 8d with MSVC 2012   BugbeeBox( void )_files/g(1).gif" alt="" style="display:none">
+<noscript>&lt;img src="http://stats.wordpress.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//stats.wordpress.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+</body></html>
